@@ -13,6 +13,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'sidekiq'
 gem 'grape'
 
+gem 'bcrypt-ruby'
+
 group :development do
 	gem 'sqlite3'
 end
