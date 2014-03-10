@@ -7,13 +7,15 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
-gem 'jbuilder', '~> 1.2'
+gem 'emblem-rails'
+gem 'haml-rails'
 
 gem 'sidekiq'
 gem 'grape'
+gem 'devise'
 
-gem 'bcrypt-ruby'
+gem 'ember-rails'
+gem 'ember-source', '1.4.0'
 
 group :development do
 	gem 'sqlite3'
