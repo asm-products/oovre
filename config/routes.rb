@@ -1,11 +1,21 @@
 Blogee::Application.routes.draw do
 
+  get 'about/' => 'pages#about', as: 'page_about'
+  get 'team/' => 'pages#team', as: 'page_team'
+  get 'features/' => 'pages#features', as: 'page_features'
+
   devise_for :users, :path => '', :path_names => {
     :sign_in => "login",
     :sign_out => "logout",
-    :sign_up => "register"
+    :sign_up => "register",
+    :edit => "settings"
   }
-  
-  root 'app#index'
+
+  get 'article/:id' => 'articles#show', as: 'article'
+
+  get 'user/:username' => 'users#show', as: 'user_profile'
+  get ':username' => 'users#show'
+
+  root to: 'pages#landing', as: 'page_landing'
 
 end

@@ -1,1 +1,2 @@
 #= require application
+$(document).foundationAlerts()

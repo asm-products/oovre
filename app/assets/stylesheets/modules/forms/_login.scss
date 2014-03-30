@@ -1,0 +1,23 @@
+.guest-form {
+	@include grid-row();
+	.login, .register {
+		@include grid-column(4);
+		background-color:#FFF;
+
+		.button {
+			&.large {
+				margin-bottom:10px;
+
+			}
+			width: 100%;
+		}
+		.link {
+			margin-bottom:0px;
+		}
+	}
+
+	.links {
+		@include grid-column($columns: 4, $push: 2);
+		background-color:#fff;
+	}
+}

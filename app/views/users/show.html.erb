@@ -1,0 +1,9 @@
+<div class="profile-header">
+	<%= image_tag @user.cover_image.url, :class => 'cover' %>
+	<div class="cover-overlay"></div>
+	<div class="user">
+		<div class="info">
+			<%= image_tag @user.avatar.url(:thumb), :class => 'avatar' %>
+		</div>
+	</div>
+</div>

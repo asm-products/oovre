@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 	<head>
-		<title>Blogee</title>
-		<%= stylesheet_link_tag "application", media: "all" %>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= content_for?(:title) ? yield(:title) : "Blogee" %></title>
+		<%= stylesheet_link_tag "application" %>
+		<%= javascript_include_tag "vendor/modernizr" %>
 		<%= csrf_meta_tags %>
 	</head>
+
 	<body>
 
+		<%= render 'layouts/header' %>
+		<% if flash[:error] %>
+			<div data-alert id="error" class="alert-box error">
+				<%= flash[:error] %>
+				<a class="close">x</a>
+			</div>
+		<% end %>
+		
+		<% if flash[:notice] %>
+			<div data-alert id="notice" class="alert-box notice">
+				<%= flash[:notice] %>
+				<a class="close">x</a>
+			</div>
+		<% end %>
+		
+		<% if flash[:success] %>
+			<div data-alert id="success" class="alert-box success">
+				<%= flash[:success] %>
+				<a class="close">x</a>
+			</div>
+		<% end %>
+
 		<%= yield %>
-		<%= javascript_include_tag "app" %>
+		<%= javascript_include_tag "application" %>
 
 	</body>
 
