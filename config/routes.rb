@@ -14,7 +14,6 @@ Blogee::Application.routes.draw do
   get 'article/:id' => 'articles#show', as: 'article'
 
   get 'user/:username' => 'users#show', as: 'user_profile'
-  get ':username' => 'users#show'
 
   devise_scope :user do
     authenticated :user do
