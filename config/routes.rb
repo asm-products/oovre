@@ -16,6 +16,14 @@ Blogee::Application.routes.draw do
   get 'user/:username' => 'users#show', as: 'user_profile'
   get ':username' => 'users#show'
 
-  root to: 'pages#landing', as: 'page_landing'
+  devise_scope :user do
+    authenticated :user do
+      root to: 'users#home', as: 'user_home'
+    end
+
+    unauthenticated :user do
+      root to: 'pages#landing', as: 'page_landing'
+    end
+  end
 
 end

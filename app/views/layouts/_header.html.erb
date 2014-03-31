@@ -1,6 +1,23 @@
 <!-- <%= link_to "Logout", destroy_user_session_path, :method => :delete %> -->
 
-<% if user_signed_in? %>
 <div class="header">
+	
+	<div class="header-content">
+		<a href="<%= user_home_path %>"><img src="assets/blogee-logo.png" alt="" class="logo left"></a>
+
+		<% if user_signed_in? %>
+			<div class="navigation left"></div>
+			<div class="user-navigation right">
+				<%= image_tag current_user.avatar.url(:thumb), :class => 'avatar' %>
+				<ul>
+					<li><%= link_to "Settings", edit_user_registration_path %></li>
+					<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+				</ul>
+			</div>
+		<% else %>
+			
+		<% end %>
+
+	</div>
+
 </div>
-<% end %>

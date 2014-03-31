@@ -1,10 +1,27 @@
 .header {
-	position:fixed;
-	top:5px;
-	left:5px;
-	height:45px;
-	width:45px;
-	background-color:#333;
-	z-index:5000;
-	color:#FFF;
+	height:50px;
+	background-color:#fff;
+	.header-content {
+		@include grid-row();
+		.logo {
+			height:50px;
+		}
+		.user-navigation {
+			.avatar{
+				float:left;
+				margin:5px 0px;
+				height:40px;
+				width:40px;
+			}
+			ul {
+				margin:10px 0px;
+				float:left;
+				list-style: none;
+				li {
+					float:left;
+					margin-left:8px;
+				}
+			}
+		}
+	}
 }
