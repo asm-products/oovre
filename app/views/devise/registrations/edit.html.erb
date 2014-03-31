@@ -3,6 +3,7 @@
 	<h1>Edit my account</h1>
 	<div class="basic">
 		<%= devise_error_messages! %>
+		<%= token_tag %>
 		<%= f.label :username %>
 		<%= f.text_field :username %>
 
