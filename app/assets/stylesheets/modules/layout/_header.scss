@@ -23,5 +23,16 @@
 				}
 			}
 		}
+		.guest-navigation {
+			ul {
+				list-style:none;
+				margin: 10px 0px;
+				float:left;
+				li {
+					float:left;
+					margin-left:8px;
+				}
+			}
+		}
 	}
 }

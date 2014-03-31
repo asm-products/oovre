@@ -3,7 +3,9 @@
 <div class="header">
 	
 	<div class="header-content">
-		<a href="<%= user_home_path %>"><img src="assets/blogee-logo.png" alt="" class="logo left"></a>
+		<a href="<%= user_home_path %>">
+			<%= image_tag "blogee-logo.png", :class => 'logo left' %>
+		</a>
 
 		<% if user_signed_in? %>
 			<div class="navigation left"></div>
@@ -15,7 +17,12 @@
 				</ul>
 			</div>
 		<% else %>
-			
+			<div class="guest-navigation right">
+				<ul>
+					<li><%= link_to "Login", new_user_session_path %></li>
+					<li><%= link_to "Register", new_user_registration_path %></li>
+				</ul>
+			</div>
 		<% end %>
 
 	</div>
