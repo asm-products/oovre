@@ -9,6 +9,8 @@ Blogee::Application.routes.draw do
     :sign_out => "logout",
     :sign_up => "register",
     :edit => "settings"
+  }, :controllers => {
+    :registrations => "registrations"
   }
 
   get 'article/:id' => 'articles#show', as: 'article'

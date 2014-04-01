@@ -3,22 +3,23 @@
 	<h1>Edit my account</h1>
 	<div class="basic">
 		<%= devise_error_messages! %>
-		<%= token_tag %>
+
+		<%= f.label :first_name %>
+		<%= f.text_field :first_name %>
+		
+		<%= f.label :last_name %>
+		<%= f.text_field :last_name %>
+
 		<%= f.label :username %>
 		<%= f.text_field :username %>
 
 		<%= f.label :email %>
 		<%= f.email_field :email %>
 
-		<%= f.label :password %><small>leave blank, if you do not wish to change it</small>
-		<%= f.password_field :password, autocomplete: "off" %>
-		<%= f.label :password_confirmation %>
-		<%= f.password_field :password_confirmation %>
+		<%= f.label :bio %>
+		<%= f.text_area :bio %>
 
-		<%= f.label :current_password %><small>we need your current password to make changes</small>
-		<%= f.password_field :current_password %>
-
-		<%= f.submit "Save", :class => 'button small success' %>
+		<%= f.submit "Save changes", :class => 'button small success' %>
 	</div>
 
 	<div class="files">
@@ -27,6 +28,15 @@
 
 		<%= f.label "Profile cover image" %>
 		<%= f.file_field :cover_image %>
+		<fieldset>
+			<legend>Change Password</legend>
+			<%= f.label :password %><small>leave blank, if you do not wish to change it</small>
+			<%= f.password_field :password, autocomplete: "off" %>
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation %>
+			<%= f.label :current_password %>
+			<%= f.password_field :current_password %>
+		</fieldset>
 	</div>
 
 </div>
