@@ -10,7 +10,7 @@
 		<% if user_signed_in? %>
 			<div class="navigation left"></div>
 			<div class="user-navigation right">
-				<%= image_tag current_user.avatar.url(:thumb), :class => 'avatar' %>
+				<a href="<%= user_profile_path current_user.username %>"><%= image_tag current_user.avatar.url(:thumb), :class => 'avatar' %></a>
 				<ul>
 					<li><%= link_to "Settings", edit_user_registration_path %></li>
 					<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
