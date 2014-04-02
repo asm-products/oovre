@@ -1,70 +1,59 @@
 .header {
-	height:50px;
-	background-color:#fff;
-	.header-content {
-		@include grid-row();
-		.logo {
-			height:50px;
-		}
-		.navigation {
-			ul {
-				margin:15px 0px;
-				float:left;
-				list-style: none;
+  height: 50px;
+  background-color: #FFF;
 
-				li {
-					padding:0px 10px;
-					float:left;
-				}
-			}
-		}
-		.user-navigation {
-			padding:5px 0px;
-			.create-post {
-				float:left;
-				height:40px;
-				width:40px;
-				background-color:$primary-color;
-				font-size:20px;
-				color:#333;
-				i {
-					padding:12px;
-				}
-				&:hover {
-					color:#fff;
-					background-color:lighten($primary-color, 5%);
-					cursor: pointer;
-				}
-			}
-			.avatar{
-				float:left;
-				height:40px;
-				width:40px;
-			}
-			ul {
-				margin:10px 0px;
-				float:left;
-				list-style: none;
+  .header-content {
+    @include grid-row();
+    
+    .logo {
+      height:50px;
+    }
+    
+    .navigation, .user-navigation, .guest-navigation {
+      height:50px;
+      padding:0;
+      ul {
+        float:left;
+        list-style:none;
+        padding:10px 0px;
+        li {
+          padding:0px 10px;
+          float:left;
+        }
+      }
+    }
 
-				li {
-					&:first-of-type {
-						border-right:2px solid rgba(51,51,51,0.4);
-					}
-					padding:0px 10px;
-					float:left;
-				}
-			}
-		}
-		.guest-navigation {
-			ul {
-				list-style:none;
-				margin: 10px 0px;
-				float:left;
-				li {
-					float:left;
-					margin-left:8px;
-				}
-			}
-		}
-	}
+    .navigation {
+      
+    }
+
+    .user-navigation {
+      .create-post {
+        float:left;
+        height: 40px;
+        width: 40px;
+        background-color:$primary-color;
+        font-size:20px;
+        color:#333;
+        i {
+          padding:12px;
+        }
+        &:hover {
+          color:#FFF;
+          background-color:lighten($primary-color, 5%);
+        }
+      }
+      .avatar {
+        float:left;
+        height: 40px;
+        width: 40px;
+      }
+      ul > li:first-of-type {
+        border-right:2px solid rgba(51,51,51,0.4);
+      }
+    }
+
+  }
+
+
 }
