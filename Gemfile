@@ -12,6 +12,7 @@ gem 'font-awesome-sass'
 
 gem 'devise'
 gem 'paperclip', '~> 4.1'
+gem 'aws-sdk'
 
 # gem 'omniauth'
 # gem 'omniauth-twitter'
