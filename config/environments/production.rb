@@ -79,6 +79,8 @@ Blogee::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.paperclip_defaults = {
+    :url => ":s3_domain_url",
+    :path => ":class/:attachment/:id/:style/:filename",
     :storage => :s3,
     :s3_credentials => {
       :bucket => ENV['S3_BUCKET_NAME'],

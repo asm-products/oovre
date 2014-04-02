@@ -1,9 +1,5 @@
 <div class="profile-header">
-	<% if @user.cover_image.exists? %>
-		<%= image_tag @user.cover_image.url, :class => 'cover' %>
-	<% else %>
-
-	<% end %>
+	<%= image_tag @user.cover_image.url, :class => 'cover' if @user.cover_image.exists? %>
 	<div class="cover-overlay"></div>
 	<div class="user">
 		<div class="info">
