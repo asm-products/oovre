@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'foundation-rails'
+gem 'font-awesome-sass'
 
 gem 'devise'
 gem 'paperclip', '~> 4.1'

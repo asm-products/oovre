@@ -7,9 +7,25 @@
 			height:50px;
 		}
 		.user-navigation {
+			padding:5px 0px;
+			.create-post {
+				float:left;
+				height:40px;
+				width:40px;
+				background-color:$primary-color;
+				font-size:20px;
+				color:#333;
+				i {
+					padding:12px;
+				}
+				&:hover {
+					color:#fff;
+					background-color:lighten($primary-color, 5%);
+					cursor: pointer;
+				}
+			}
 			.avatar{
 				float:left;
-				margin:5px 0px;
 				height:40px;
 				width:40px;
 			}
@@ -17,9 +33,13 @@
 				margin:10px 0px;
 				float:left;
 				list-style: none;
+
 				li {
+					&:first-of-type {
+						border-right:2px solid rgba(51,51,51,0.4);
+					}
+					padding:0px 10px;
 					float:left;
-					margin-left:8px;
 				}
 			}
 		}

@@ -10,6 +10,7 @@
 		<% if user_signed_in? %>
 			<div class="navigation left"></div>
 			<div class="user-navigation right">
+				<div class="create-post"><i class="fa fa-plus"></i></div>
 				<a href="<%= user_profile_path current_user.username %>"><%= image_tag current_user.avatar.url(:thumb), :class => 'avatar' %></a>
 				<ul>
 					<li><%= link_to "Settings", edit_user_registration_path %></li>
