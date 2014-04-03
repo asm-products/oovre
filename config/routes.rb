@@ -14,6 +14,7 @@ Blogee::Application.routes.draw do
   }
 
   resource :articles, only: [:create, :update, :delete]
+  resource :article_sets, only: [:create, :update, :delete]
 
   get 'a/new' => 'articles#new', as: 'new_article'
   get 'article/:id' => 'articles#show', as: 'article'

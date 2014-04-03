@@ -16,12 +16,12 @@
 				<div class="num"><%= @user.articles.count %></div>
 				<div class="name">posts</div>
 			</div>
-			<div class="stat">
+<!--  <div class="stat">
 				<div class="num">25</div>
 				<div class="name">followers</div>
-			</div>
+			</div> -->
 			<div class="stat">
-				<div class="num">534</div>
+				<div class="num"><%= @user.visit.unique_visits rescue 0 %></div>
 				<div class="name">page views</div>
 			</div>
 		</div>

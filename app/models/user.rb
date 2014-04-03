@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment_content_type :cover_image, :content_type => /\Aimage\/.*\Z/
 
+  has_one :visit, :as => :visitable
   has_many :articles
   has_many :article_sets
   has_many :article_set_subscriptions
