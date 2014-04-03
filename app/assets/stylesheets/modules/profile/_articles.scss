@@ -1,0 +1,19 @@
+.articles-container {
+	@include grid-row();
+	padding:10px 5px;
+	margin-top:10px;
+	.articles {
+		@include grid-row();
+		.article {
+			@include grid-column(4);
+			padding:10px;
+			.article-container {
+				background-color:#FFF;
+				border-radius:2px;
+				-webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.2);
+				-moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.2);
+				box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.2);
+			}
+		}
+	}
+}

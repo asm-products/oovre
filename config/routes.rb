@@ -13,6 +13,9 @@ Blogee::Application.routes.draw do
     :registrations => "registrations"
   }
 
+  resource :articles, only: [:create, :update, :delete]
+
+  get 'a/new' => 'articles#new', as: 'new_article'
   get 'article/:id' => 'articles#show', as: 'article'
 
   get 'user/:username' => 'users#show', as: 'user_profile'

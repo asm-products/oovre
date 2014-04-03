@@ -24,10 +24,11 @@
     }
 
     .navigation {
-      
+      padding:5px 0px;
     }
 
     .user-navigation {
+      padding:5px 0px;
       .create-post {
         float:left;
         height: 40px;
@@ -39,6 +40,7 @@
           padding:12px;
         }
         &:hover {
+          cursor:pointer;
           color:#FFF;
           background-color:lighten($primary-color, 5%);
         }

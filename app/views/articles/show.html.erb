@@ -1,1 +1,3 @@
 <%= @article.title %>
+<%= @article.subtitle if @article.subtitle.present? %>
+<%= @article.content.html_safe %>

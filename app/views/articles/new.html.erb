@@ -1,5 +1,9 @@
-<% form_for @article do |f| %>
-	
-	
+<div class="row">
+	<%= form_for @article do |f| %>
+		<%=	f.text_field :title, placeholder: "Title" %>
+		<%= f.text_field :subtitle, placeholder: "Subtitle" %>
+		<%=	f.text_area :content, placeholder: "Write your story here..." %>
+		<%=	f.submit "Create Article", :class => 'button large' %>
+	<% end %>
+</div>
 
-<% end %>

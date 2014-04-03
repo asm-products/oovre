@@ -12,10 +12,14 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :article_sets
   has_many :article_set_subscriptions
-  # has_many :article_comments
+  has_many :article_comments
 
   def recent_articles(count=5)
     self.articles.last(count)
+  end
+
+  def name
+    "#{self.first_name} #{self.last_name}"
   end
 
 end
