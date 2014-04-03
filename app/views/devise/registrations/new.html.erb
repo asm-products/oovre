@@ -3,7 +3,6 @@
 		<h1>Create an account</h1>
 
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-			<%= token_tag %>
 			<%= f.label :first_name %>
 			<%= f.text_field :first_name %>
 			<%= f.label :last_name %>
