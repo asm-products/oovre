@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :article_sets
   has_many :article_set_subscriptions
   has_many :article_comments
+  has_many :followers, :class_name => 'Followings', :foreign_key => 'user_id'
+  has_many :following, :class_name => 'Followings', :foreign_key => 'follower_id'
 
   def recent_articles(count=5)
     self.articles.last(count)

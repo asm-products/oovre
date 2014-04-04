@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403181810) do
+ActiveRecord::Schema.define(version: 20140403230553) do
 
   create_table "article_comments", force: true do |t|
     t.integer  "article_id"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 20140403181810) do
     t.string   "title"
     t.string   "subtitle"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "followings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "follower_id"
+    t.boolean  "blocked"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

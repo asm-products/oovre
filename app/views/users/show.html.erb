@@ -6,6 +6,11 @@
 		<div class="cover-overlay"></div>
 	</div>
 	<div class="user">
+		<div class="follow">
+			<% if @user != current_user %>
+				<button name="follow_user" class="button small success">Follow <%= @user.first_name %></button>
+			<% end %>
+		</div>
 		<div class="info">
 			<%= image_tag @user.avatar.url(:thumb), :class => 'avatar' %>
 			<div class="name"><%= @user.name %></div>
