@@ -29,6 +29,13 @@
 		@include grid-row();
 		position:relative !important;
 		padding:30px 0px;
+		.follow {
+			button {
+				border-radius:2px;
+				z-index:1000;
+				position:absolute;
+			}
+		}
 		.info {
 			position:absolute;
 			width:250px;

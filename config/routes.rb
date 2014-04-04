@@ -14,6 +14,7 @@ Blogee::Application.routes.draw do
     resource :users
     resource :articles
     resource :article_sets
+    resource :article_comments
   end
 
   ######## Application Routes

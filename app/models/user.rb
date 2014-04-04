@@ -14,8 +14,23 @@ class User < ActiveRecord::Base
   has_many :article_sets
   has_many :article_set_subscriptions
   has_many :article_comments
-  has_many :followers, :class_name => 'Followings', :foreign_key => 'user_id'
-  has_many :following, :class_name => 'Followings', :foreign_key => 'follower_id'
+  has_many :relationships, foreign_key: 'follower_id', dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :reverse_relationships, foreign_key: 'followed_id', class_name: 'Relationship'
+  has_many :followers, through: :reverse_relationships
+
+
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
 
   def recent_articles(count=5)
     self.articles.last(count)
