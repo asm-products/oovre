@@ -6,7 +6,7 @@
 
 		<%= f.label :first_name %>
 		<%= f.text_field :first_name %>
-		
+
 		<%= f.label :last_name %>
 		<%= f.text_field :last_name %>
 
@@ -19,15 +19,6 @@
 		<%= f.label :bio %>
 		<%= f.text_area :bio %>
 
-		<%= f.submit "Save changes", :class => 'button small success' %>
-	</div>
-
-	<div class="files">
-		<%= f.label :avatar %>
-		<%= f.file_field :avatar %>
-
-		<%= f.label "Profile cover image" %>
-		<%= f.file_field :cover_image %>
 		<fieldset>
 			<legend>Change Password</legend>
 			<%= f.label :password %><small>leave blank, if you do not wish to change it</small>
@@ -37,6 +28,25 @@
 			<%= f.label :current_password %>
 			<%= f.password_field :current_password %>
 		</fieldset>
+
+		<%= f.submit "Save changes", :class => 'button small success' %>
+	</div>
+
+	<div class="files">
+		<div class="avatar">
+			<%= f.label :avatar %>
+			<%= f.file_field :avatar %>
+			<% if current_user.avatar? %>
+				<%= image_tag current_user.avatar.url(:thumb), class: 'avatar' %>
+			<% end %>
+		</div>
+		<div class="cover-image">
+			<%= f.label "Profile cover image" %>
+			<%= f.file_field :cover_image %>
+			<% if current_user.cover_image? %>
+				<%= image_tag current_user.cover_image.url(:large), class: 'cover-image' %>
+			<% end %>
+		</div>
 	</div>
 
 </div>
