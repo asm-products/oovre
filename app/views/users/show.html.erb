@@ -8,7 +8,12 @@
 	<div class="user">
 		<div class="follow">
 			<% if @user != current_user %>
-				<button name="follow_user" id="follow_user" data-user-id="<%= @user.id %>" class="button small success">Follow <%= @user.first_name %></button>
+				<% if current_user.following?(@user.id) %>
+					<button id="following-user" class="button small primary">Following <%= @user.first_name %></button>
+					<button id="unfollow-user" data-user-id="<%= @user.id %>" class="button small alert" style="display:none;">Unfollow <%= @user.first_name %></button>
+				<% else %>
+					<button name="follow_user" id="follow-user" data-user-id="<%= @user.id %>" class="button small success">Follow <%= @user.first_name %></button>
+				<% end %>
 			<% end %>
 		</div>
 		<div class="info">

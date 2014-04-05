@@ -19,14 +19,14 @@
 				<a class="close">x</a>
 			</div>
 		<% end %>
-		
+
 		<% if flash[:notice] %>
 			<div data-alert id="notice" class="alert-box notice">
 				<%= flash[:notice] %>
 				<a class="close">x</a>
 			</div>
 		<% end %>
-		
+
 		<% if flash[:success] %>
 			<div data-alert id="success" class="alert-box success">
 				<%= flash[:success] %>
@@ -35,7 +35,7 @@
 		<% end %>
 
 		<%= yield %>
-		<%= javascript_include_tag "application" %>
+		<%= javascript_include_tag "app" %>
 
 	</body>
 

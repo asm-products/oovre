@@ -1,2 +1,3 @@
 #= require application
-$(document).foundationAlerts()
+
+#= require profile
