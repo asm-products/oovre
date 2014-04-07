@@ -1,3 +1,12 @@
-<%= @article.title %>
-<%= @article.subtitle if @article.subtitle.present? %>
-<%= @article.content.html_safe %>
+<div class="article-view">
+	
+	<div class="background-image">
+		
+	</div>
+	<div class="title"><%= @article.title %></div>
+	<div class="subtitle"><%= @article.subtitle if @article.subtitle.present? %></div>
+	<div class="content">
+		<%= @article.content.html_safe %>
+	</div>
+
+</div>

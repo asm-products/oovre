@@ -40,11 +40,15 @@
 
 <div class="articles-container">
 	<div class="articles">
-		<% for article in @user.recent_articles(5) do %>
+		<% for article in @user.recent_articles(10) do %>
 			<div class="article">
 				<a href="<%= article_path(article) %>">
 					<div class="article-container">
-						<div class="background"></div>
+						<div class="background">
+							<% if article.image? %>
+								<%= image_tag article.image.url(:small) %>
+							<% end %>
+						</div>
 						<div class="title"><%= article.title %></div>
 						<div class="subtitle"><%= article.subtitle if !article.subtitle.blank? %></div>
 					</div>

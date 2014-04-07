@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = get_article(params[:id])
-    # @similar = @article.similar(5)
+    @similar = @article.similar(5)
   end
 
   private
@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
   end
 
   def create_params
-    params.require(:article).permit(:title, :subtitle, :content)
+    params.require(:article).permit(:title, :subtitle, :content, :image)
   end
 
 end
