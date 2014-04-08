@@ -1,7 +1,7 @@
 class ArticleSetsController < ApplicationController
 
   def new
-    @article_set = article_sets.new
+    @article_set = current_user.article_sets.new
   end
 
   def show

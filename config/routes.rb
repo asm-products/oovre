@@ -32,11 +32,14 @@ Blogee::Application.routes.draw do
   get 'dashboard' => 'dashboard#index', as: 'user_dashboard'
 
   # articles
-  resource :articles, only: [:create, :update, :delete]
-  resource :article_sets, only: [:create, :update, :delete]
-  resource :article_comments, only: [:create, :update, :delete]
-  get 'a/new' => 'articles#new', as: 'new_article'
+  resource :articles, only: [:create]
+  get 'article/new' => 'articles#new', as: 'new_article'
   get 'article/:id' => 'articles#show', as: 'article'
+  get 'article/:id/edit' => 'articles#edit', as: 'edit_article'
+  patch 'article/:id' => 'articles#update', as: 'update_article'
+  delete 'article/:id' => 'articles#destroy', as: 'article_delete'
+  resource :article_sets
+  resource :article_comments
 
 
   ######## Static Routes

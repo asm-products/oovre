@@ -1,2 +1,8 @@
-<h1>ArticleSets#new</h1>
-<p>Find me in app/views/article_sets/new.html.erb</p>
+<%= form_for(@article_set) do |f| %>
+	
+	<%= f.text_field :name %>
+	<%= f.text_field :description %>
+
+	<%= f.submit "Create set" %>
+
+<% end %>
