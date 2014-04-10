@@ -1,0 +1,19 @@
+<div class="articles-container">
+	<div class="articles">
+		<% @articles.each do |article| %>
+			<div class="article">
+				<a href="<%= article_path(article) %>">
+					<div class="article-container">
+						<div class="background">
+							<% if article.image? %>
+								<%= image_tag article.image.url(:small) %>
+							<% end %>
+						</div>
+						<div class="title"><%= article.title %></div>
+						<div class="subtitle"><%= article.subtitle if !article.subtitle.blank? %></div>
+					</div>
+				</a>
+			</div>
+		<% end %>
+	</div>
+</div>

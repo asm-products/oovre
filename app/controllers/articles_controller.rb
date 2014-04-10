@@ -1,40 +1,51 @@
 class ArticlesController < ApplicationController
+  before_action :get_article, only: [:show, :edit, :update, :destroy]
 
   def new
     @article = current_user.articles.new
   end
 
   def edit
-    @article = get_article(params[:id])
+    if current_user != @article.user
+      redirect_to user_home_path, notice: "You can't edit this article."
+    end
+  end
+
+  def show
+    Visit.track(@article, request.remote_ip)
+    @similar = @article.similar(5)
   end
 
   def create
     @article = current_user.articles.new(article_params)
-    redirect_to article_path(@article) if @article.save()
+    if @article.save()
+      redirect_to article_path(@article), notice: "Created article!"
+    else
+      redirect_to new_article_path(@article), notice: "Could not save article."
+    end
   end
 
   def update
-    @article = get_article(params[:id])
-    redirect_to article_path(@article) if @article.update_attributes(article_params)
-  end
-
-  def show
-    @article = get_article(params[:id])
-    @similar = @article.similar(5)
+    if @article.update_attributes(article_params)
+      redirect_to article_path(@article)
+    end
   end
 
   def destroy
-    @article = get_article(params[:id])
+    if current_user == @article.user
+      @article.destroy
+      redirect_to user_home_path, notice: "Successfully deleted this article."
+    end
+  end
+
+  def get_article
+    @article = Article.find(params[:id])
   end
 
   private
 
-  def get_article(article_id)
-    Article.find(article_id)
-  end
-
-  def article_params
-    params.require(:article).permit(:title, :subtitle, :content, :image)
-  end
+    def article_params
+      params.require(:article).permit(:title, :subtitle, :content, :image)
+    end
 
 end

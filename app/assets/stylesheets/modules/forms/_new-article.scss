@@ -1,7 +1,25 @@
-.content-editor {
-  outline:none;
-  background-color:#FFF;
-  min-height:500px;
-  width:100%;
-  cursor:text;
+.article-editor {
+	@include grid-row();
+	
+	.title, .subtitle {
+		background-color:transparent;
+		box-shadow:none;
+		border:0;
+		padding:5px 0px;
+		&:focus { background-color:transparent; box-shadow:none; }
+	}
+	.title {
+		font-size:rem-calc(30);
+		margin-bottom:0px;
+	}
+	.subtitle {
+		font-size:rem-calc(20);
+	}
+}
+
+#jquery-notebook-content-1 {
+	width:0 !important;
+}
+#jqeditor-temparea {
+	width:0 !important; 
 }

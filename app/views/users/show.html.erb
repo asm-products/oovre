@@ -42,7 +42,7 @@
 
 <div class="articles-container">
 	<div class="articles">
-		<% for article in @user.recent_articles(10) do %>
+		<% for article in @user.recent_articles(9) do %>
 			<div class="article">
 				<a href="<%= article_path(article) %>">
 					<div class="article-container">

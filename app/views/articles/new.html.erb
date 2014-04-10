@@ -1,13 +1,17 @@
-<div class="row">
+<div class="article-editor">
+
 	<%= form_for @article do |f| %>
 
-		<%= f.file_field :image %>
-		<%=	f.text_field :title, placeholder: "Title" %>
-		<%= f.text_field :subtitle, placeholder: "Subtitle" %>
+		<%= f.file_field :image, class: "image-upload" %>
+		<%=	f.text_field :title, placeholder: "Title", class: "title" %>
+		<%= f.text_field :subtitle, placeholder: "Subtitle", class: "subtitle" %>
+			
+		<%=	f.hidden_field :content, class: "content-editor-content" %>
+		<div id="content-editor">
+		</div>
 
-		<%=	f.text_area :content, placeholder: "Write your story here..." %>
-
-		<%=	f.submit "Create Article", :class => 'button large' %>
+		<%=	f.submit "Create Article", :class => 'button small' %>
 
 	<% end %>
+
 </div>
