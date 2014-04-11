@@ -18,7 +18,8 @@ gem 'aws-sdk'
 # gem 'omniauth'
 # gem 'omniauth-twitter'
 
-group :development do
+group :development, :test do
+	gem 'rspec-rails'
 	gem 'sqlite3'
 end
 
