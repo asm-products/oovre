@@ -1,5 +1,7 @@
 <% content_for(:title){ @user.name } %>
 
+<div id="user-information" data-user-id="<%= @user.id %>" data-user-name="<%= @user.name %>"></div>
+
 <div class="profile-header">
 	<div class="cover-container">
 		<% if @user.cover_image? %>
@@ -28,7 +30,7 @@
 				<div class="name"><%= "article".pluralize(@user.articles.count) %></div>
 			</div>
 		  <div class="stat">
-				<div class="num"><%= @user.followers.count rescue 0 %></div>
+				<div class="num" id="follower-count"><%= @user.followers.count rescue 0 %></div>
 				<div class="name"><%= "follower".pluralize(@user.followers.count) %></div>
 			</div>
 			<div class="stat">

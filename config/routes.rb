@@ -11,7 +11,7 @@ Blogee::Application.routes.draw do
 
   ######## API Routes
   namespace :api do
-    get 'users/follow_status/:user_id' => 'users#follow_status'
+    get 'users/follower_count' => 'users#follower_count'
     post 'users/follow/' => 'users#follow'
     post 'users/unfollow' => 'users#unfollow'
     resource :articles
