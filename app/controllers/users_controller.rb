@@ -2,7 +2,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:username])
-    Visit.track(@user, request.remote_ip)
+    respond_to do |format|
+      format.html { Visit.track(@user, request.remote_ip) }   # show.html
+      format.json { render json: @user, status: :ok }
+    end
   end
 
   def home

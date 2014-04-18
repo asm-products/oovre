@@ -10,12 +10,11 @@
 	<div class="user">
 		<div class="follow">
 			<% if @user != current_user %>
-				<% if current_user.following?(@user.id) %>
-					<button id="following-user" class="button small primary">Following <%= @user.first_name %></button>
-					<button id="unfollow-user" data-user-id="<%= @user.id %>" class="button small alert" style="display:none;">Unfollow <%= @user.first_name %></button>
-				<% else %>
-					<button name="follow_user" id="follow-user" data-user-id="<%= @user.id %>" class="button small success">Follow <%= @user.first_name %></button>
-				<% end %>
+				<div class="follow-group  <%= if @following then "is-following" else "not-following" end %>">
+					<button id="following" class="button small primary following">Following <%= @user.first_name %></button>
+					<button id="unfollow-user" data-user-id="<%= @user.id %>" class="button small alert unfollow">Unfollow <%= @user.first_name %></button>
+					<button id="follow-user" data-user-id="<%= @user.id %>" class="button small success follow">Follow <%= @user.first_name %></button>
+				</div>
 			<% end %>
 		</div>
 		<div class="info">
@@ -26,15 +25,15 @@
 		<div class="stats">
 			<div class="stat">
 				<div class="num"><%= @user.articles.count rescue 0 %></div>
-				<div class="name">posts</div>
+				<div class="name"><%= "article".pluralize(@user.articles.count) %></div>
 			</div>
 		  <div class="stat">
 				<div class="num"><%= @user.followers.count rescue 0 %></div>
-				<div class="name">followers</div>
+				<div class="name"><%= "follower".pluralize(@user.followers.count) %></div>
 			</div>
 			<div class="stat">
 				<div class="num"><%= @user.visit.unique_visits rescue 0 %></div>
-				<div class="name">page views</div>
+				<div class="name">page <%= "view".pluralize(@user.visit.unique_visits) %></div>
 			</div>
 		</div>
 	</div>
@@ -53,6 +52,9 @@
 						</div>
 						<div class="title"><%= article.title %></div>
 						<div class="subtitle"><%= article.subtitle if !article.subtitle.blank? %></div>
+						<% if article.article_set %>
+							<%= link_to article.article_set.name, article_sets_path(article.article_set), class: 'article-set' %>
+						<% end %>
 					</div>
 				</a>
 			</div>

@@ -30,10 +30,24 @@
 		position:relative !important;
 		padding:30px 0px;
 		.follow {
-			button {
-				border-radius:2px;
-				z-index:1000;
-				position:absolute;
+			.follow-group { 
+				.button {border-radius:2px; 
+				z-index:1000; 
+				position:absolute; }
+				&.is-following {
+					.follow { display:none; }
+					.following { display: block; }
+					.unfollow { display: none; }
+					&:hover {
+						.following { display:none; }
+						.unfollow { display:block; }
+					}
+				}
+				&.not-following {
+					.follow {display:block;}
+					.unfollow {display:none;}
+					.following {display:none;}
+				}
 			}
 		}
 		.info {

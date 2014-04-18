@@ -26,15 +26,27 @@ Blogee::Application.routes.draw do
   end
 
   # users
-  get 'user/:username' => 'users#show', as: 'user_profile'
+  scope 'user' do
+    get ':username' => 'users#show', as: 'user_profile'
+  end
 
   # dashboard
-  get 'dashboard' => 'dashboard#index', as: 'user_dashboard'
+  scope 'dashboard' do
+    get '' => 'dashboard#index', as: 'user_dashboard'
+  end
 
   # articles
+  scope 'article' do 
+    get 'new' => 'articles#new', as: 'article_new'
+    get ':id' => 'articles#show', as: 'article'
+    get ':id/edit' => 'articles#show', as: 'article_edit'
+  end
+
+  # article sets
+  scope 'set' do
+    get 'new' => 'article_sets#new', as: 'article_set_new'
+  end
   resource :articles, only: [:create]
-  get 'article/new' => 'articles#new', as: 'new_article'
-  get 'article/:id' => 'articles#show', as: 'article'
   get 'article/:id/edit' => 'articles#edit', as: 'edit_article'
   patch 'article/:id' => 'articles#update', as: 'update_article'
   delete 'article/:id' => 'articles#destroy', as: 'article_delete'

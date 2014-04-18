@@ -5,6 +5,8 @@ class Article < ActiveRecord::Base
     where("created_at >= ? and created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
   }
 
+  enum status: [:draft, :shared_draft, :published]
+
   has_attached_file :image, :styles => { :large => "900x900>", :small => "300x300#" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
@@ -13,6 +15,7 @@ class Article < ActiveRecord::Base
 
   has_one :visit, as: :visitable
   has_many :article_comments
+  has_many :tags
 
   def similar(count=5)
     Article.where(["title LIKE ?", self.title]).where.not(title: self.title).take(count)
