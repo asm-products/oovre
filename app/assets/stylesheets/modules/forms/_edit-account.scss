@@ -1,10 +1,10 @@
 .account-settings {
-	@include grid-row();
+	// @include grid-row();
 
 	.basic {
-		@include grid-column(4);
+		// @include grid-column(4);
 	}
 	.files {
-		@include grid-column($columns: 4, $push: 2);
+		// @include grid-column($columns: 4, $push: 2);
 	}
 }

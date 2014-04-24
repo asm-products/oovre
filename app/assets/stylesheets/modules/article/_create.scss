@@ -1,0 +1,51 @@
+.article-creator {
+  @include container(60em);
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:1000;
+
+  .content-creation {
+    @include container(45em);
+    position:relative !important;
+    margin:0 auto !important;
+    .title, .subtitle {
+      border:0;
+      border-bottom:1px solid #aaa;
+      margin-bottom:20px;
+      padding:15px 10px;
+      background-color:transparent;
+      width:100%;
+      outline:none;
+    }
+    .title { font-size:45px; }
+    .subtitle { font-size:25px; }
+  }
+
+}
+
+.close {
+  display:block;
+  position:absolute;
+  top:5px;
+  right:5px;
+  z-index:600;
+  font-size:25px;
+  color:#CCC;
+  &:hover {
+    cursor:pointer;
+  }
+}
+
+.overlay {
+  position:absolute;
+  z-index:500;
+  display:block;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color:#FFF;
+}

@@ -1,0 +1,52 @@
+.button {
+  &.primary {
+    background-color:$primary-color;
+    &:hover {
+      background-color:darken($primary-color, 15%);
+    }
+  }
+
+  &.alert {
+    background-color:$alert-color;
+    &:hover {
+      background-color:darken($alert-color, 15%);
+    }
+  }
+
+  &.success {
+    background-color:$success-color;
+    &:hover {
+      background-color:darken($success-color, 15%);
+    }
+  }
+}
+
+// Ghost Button styles
+.ghost {
+  &.primary {
+    color:$primary-color;
+    border:1px solid $primary-color;
+    &:hover {
+      color:#FFF;
+      background-color:darken($primary-color, 15%);
+    }
+  }
+
+  &.alert {
+    color:$alert-color;
+    border:1px solid $alert-color;
+    &:hover {
+      color:#FFF;
+      background-color:darken($alert-color, 15%);
+    }
+  }
+
+  &.success {
+    color:$success-color;
+    border:1px solid $success-color;
+    &:hover {
+      color:#FFF;
+      background-color:darken($success-color, 15%);
+    }
+  }
+}

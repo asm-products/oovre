@@ -14,9 +14,9 @@
 			<% if user_signed_in? %>
 				<% if @user != current_user %>
 					<div class="follow-group  <%= if current_user.following?(@user) then "is-following" else "not-following" end %>">
-						<button id="following" class="button small primary following">Following <%= @user.first_name %></button>
-						<button id="unfollow-user" data-user-id="<%= @user.id %>" class="button small alert unfollow">Unfollow <%= @user.first_name %></button>
-						<button id="follow-user" data-user-id="<%= @user.id %>" class="button small success follow">Follow <%= @user.first_name %></button>
+						<button id="following" class="button primary following">Following <%= @user.first_name %></button>
+						<button id="unfollow-user" data-user-id="<%= @user.id %>" class="button alert unfollow">Unfollow <%= @user.first_name %></button>
+						<button id="follow-user" data-user-id="<%= @user.id %>" class="button success follow">Follow <%= @user.first_name %></button>
 					</div>
 				<% end %>
 			<% end %>

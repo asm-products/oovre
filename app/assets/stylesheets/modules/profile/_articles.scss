@@ -1,11 +1,11 @@
 .articles-container {
-	@include grid-row();
+	// @include grid-row();
 	padding:10px 5px;
 	margin-top:10px;
 	.articles {
-		@include grid-row();
+		// @include grid-row();
 		.article {
-			@include grid-column(4);
+			// @include grid-column(4);
 			padding:10px;
 			color:#333;
 			.article-container {

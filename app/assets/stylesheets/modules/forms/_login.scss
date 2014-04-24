@@ -1,7 +1,7 @@
 .guest-form {
-	@include grid-row();
+	// @include grid-row();
 	.login, .register {
-		@include grid-column(4);
+		// @include grid-column(4);
 		background-color:#FFF;
 
 		.button {
@@ -17,7 +17,7 @@
 	}
 
 	.links {
-		@include grid-column($columns: 4, $push: 2);
+		// @include grid-column($columns: 4, $push: 2);
 		background-color:#fff;
 	}
 }

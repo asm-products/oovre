@@ -26,7 +26,7 @@
 	}
 
 	.user {
-		@include grid-row();
+		@include container;
 		position:relative !important;
 		padding:30px 0px;
 		.follow {
