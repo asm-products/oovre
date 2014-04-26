@@ -1,9 +1,11 @@
 class Article < ActiveRecord::Base
-  default_scope { order("created_at DESC") }
+  # default_scope { order("created_at DESC") }
 
-  scope :today, lambda {
-    where("created_at >= ? and created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
-  }
+  scope :recent, -> { order("created_at DESC") }
+  scope :today, -> { where("created_at >= ? and created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day) }
+  scope :with_visits, lambda { joins(:visit) }
+  scope :trending_with_unique, -> { with_visits.order('visits.unique_visits DESC')}
+  scope :trending_with_total, -> { with_visits.order("visits.total_visits DESC") }
 
   enum status: [:draft, :shared_draft, :published]
 

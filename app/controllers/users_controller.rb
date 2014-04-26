@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   end
 
   def home
-    @articles = Article.take(20)
-    @trending = Article.take(5)
+    @articles = Article.recent.today.take(20)
+    @trending = Article.trending_with_total.take(5)
   end
 
 end
