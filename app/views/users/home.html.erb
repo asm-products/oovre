@@ -25,6 +25,7 @@
 					<div class="article-container">
 						<% if article.image? %>
 						<div class="background">
+							<div class="overlay"></div>
 							<%= image_tag article.image.url(:small) %>
 						</div>
 						<% end %>
