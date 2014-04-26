@@ -1,19 +1,41 @@
-<div class="articles-container">
-	<div class="articles">
-		<% @articles.each do |article| %>
-			<div class="article">
-				<a href="<%= article_path(article) %>">
+<div class="container content-container">
+	
+	<div class="sidebar">
+		<!-- <div class="search">
+			<input type="text" class="search-bar">
+		</div> -->
+		<div class="trending-articles">
+			<div class="title">Trending Articles</div>
+			<div class="articles">
+				<% @articles.each do |article| %>
+					<div class="article">
+						<a href="<%= article_path(article) %>"><%= article.title %></a>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="recent-articles">
+
+		<div class="articles">
+			<% @articles.each do |article| %>
+				
+				<div class="article-card-1"><a href="<%= article_path(article) %>">
 					<div class="article-container">
+						<% if article.image? %>
 						<div class="background">
-							<% if article.image? %>
-								<%= image_tag article.image.url(:small) %>
-							<% end %>
+							<%= image_tag article.image.url(:small) %>
 						</div>
+						<% end %>
 						<div class="title"><%= article.title %></div>
 						<div class="subtitle"><%= article.subtitle if !article.subtitle.blank? %></div>
 					</div>
-				</a>
-			</div>
-		<% end %>
+					<div class="read-more">read more</div>
+				</a></div>
+			<% end %>
+		</div>
+
 	</div>
+
 </div>

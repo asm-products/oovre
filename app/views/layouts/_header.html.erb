@@ -2,7 +2,7 @@
 
 	<div class="header-content">
 		<a href="<%= user_home_path %>" class="logo left">
-			<img src="http://placehold.it/50x50">
+			<%= image_tag "oovre-logo.png" %>
 		</a>
 
 
@@ -14,7 +14,7 @@
 				<li><%= link_to "Dashboard", user_dashboard_path %></li>
 			</ul>
 			<div class="user-nav">
-				<a href="<%= article_new_path %>" class="new-article ghost">New Article</a>
+				<div class="new-article"><a href="<%= article_new_path %>" class="ghost">New Article</a></div>
 				<div class="user-profile">
 					<a  href="<%= user_profile_path current_user.username %>"><%= image_tag current_user.avatar.url(:thumb), :class => 'avatar' %>
 					</a>

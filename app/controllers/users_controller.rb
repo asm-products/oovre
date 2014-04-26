@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def home
-    @articles = Article.today.take(20)
+    @articles = Article.take(20)
   end
 
 end
