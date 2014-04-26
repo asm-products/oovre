@@ -7,7 +7,7 @@
 		<div class="trending-articles">
 			<div class="title">Trending Articles</div>
 			<div class="articles">
-				<% @articles.each do |article| %>
+				<% @trending.each do |article| %>
 					<div class="article">
 						<a href="<%= article_path(article) %>"><%= article.title %></a>
 					</div>
@@ -24,10 +24,18 @@
 				<div class="article-card-1"><a href="<%= article_path(article) %>">
 					<div class="article-container">
 						<% if article.image? %>
-						<div class="background">
-							<div class="overlay"></div>
-							<%= image_tag article.image.url(:small) %>
-						</div>
+							<div class="background">
+								<div class="user-information">
+									<a href="<%= user_profile_path(article.user.username) %>">
+										<div class="profile-image">
+											<span><%= article.user.name %></span>
+											<%= image_tag article.user.avatar.url(:thumb), class: 'avatar' %>
+										</div>
+									</a>
+								</div>
+								<div class="overlay"></div>
+								<%= image_tag article.image.url(:small), class: 'background-image' %>
+							</div>
 						<% end %>
 						<div class="title"><%= article.title %></div>
 						<div class="subtitle"><%= article.subtitle if !article.subtitle.blank? %></div>

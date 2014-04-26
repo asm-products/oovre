@@ -1,13 +1,16 @@
 .recent-articles {
-  @include span-columns(9, 12);
+  @include span-columns(8, 12);
   margin-right:0 !important;
 
   .articles {
     
     .article-card-1 {
       @include span-columns(3, 6);
-      margin-right:0;
+      // margin-right:0;
       margin-bottom:10px;
+      &:nth-child(2n+2) {
+        margin-right:0 !important;
+      }
       a {
         text-decoration:none;
         color:#333;
@@ -22,21 +25,50 @@
           height:150px;
           position:relative;
           overflow:hidden;
-          .overlay {
-            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
-            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
-            background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
-            background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
-            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
-
-            // background-image: -o-linear-gradient(-89deg, rgba(51,51,51,0.00) 0%, rgba(0,0,0,0.66) 96%);
-            // background-image: -moz-linear-gradient(-89deg, rgba(51,51,51,0.00) 0%, rgba(0,0,0,0.66) 96%);
-            // background-image: -ms-linear-gradient(-89deg, rgba(51,51,51,0.00) 0%, rgba(0,0,0,0.66) 96%);
-            // background-image: linear-gradient(-179deg, rgba(51,51,51,0.00) 0%, rgba(0,0,0,0.66) 96%);
+          .user-information {
+            z-index:500;
+            position:absolute;
+            top:0;
+            bottom:0;
+            right:0;
+            left:0;
+            .profile-image {
+              position:absolute;
+              right:10px;
+              bottom:5px;
+              color:rgba(255,255,255,0.8);
+              span {
+                font-family: 'Lato', sans-serif;
+                float:left;
+                display:block;
+                padding:10px 0px;
+              }
+              img {
+                float:left;
+                margin-left:15px;
+                width: 35px;
+                height: 35px;
+                border-radius:17.5px;
+              }
+            }
           }
-          img {
+          .overlay {
+            display:block;
+            z-index:200;
+            // background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+            // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+            // background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+            // background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+            // background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+            // background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
+            // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+
+            background: -o-linear-gradient(-89deg, rgba(51,51,51,0.00) 0%, rgba(0,0,0,0.66) 96%);
+            background: -moz-linear-gradient(-89deg, rgba(51,51,51,0.00) 0%, rgba(0,0,0,0.66) 96%);
+            background: -ms-linear-gradient(-89deg, rgba(51,51,51,0.00) 0%, rgba(0,0,0,0.66) 96%);
+            background: linear-gradient(-179deg, rgba(51,51,51,0.00) 0%, rgba(0,0,0,0.66) 96%);
+          }
+          .background-image {
             position:absolute;
             width:100%;
             bottom:0;
@@ -45,7 +77,8 @@
         .title {
           padding:10px 20px;
           font-family: 'Lato', sans-serif;
-          font-size:30px;
+          font-weight:300;
+          font-size:25px;
         }
         .subtitle {
           padding:10px 25px;

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def home
     @articles = Article.take(20)
+    @trending = Article.take(5)
   end
 
 end
