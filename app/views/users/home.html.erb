@@ -22,7 +22,7 @@
 			<% @articles.each do |article| %>
 				
 				<div class="article-card-1">
-					<a href="<%= article_path(article) %>">
+					
 					<div class="article-container">
 						<% if article.image? %>
 							<div class="background">
@@ -41,8 +41,7 @@
 						<div class="title"><%= article.title %></div>
 						<div class="subtitle"><%= article.subtitle if !article.subtitle.blank? %></div>
 					</div>
-					<div class="read-more">read more</div>
-					</a>
+					<a href="<%= article_path(article) %>"><div class="read-more">read more</div></a>
 				</div>
 			<% end %>
 		</div>
