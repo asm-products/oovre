@@ -42,13 +42,14 @@ Blogee::Application.routes.draw do
     get 'new' => 'articles#new', as: 'article_new'
     get ':id' => 'articles#show', as: 'article'
     get ':id/edit' => 'articles#edit', as: 'article_edit'
-    delete 'delete' => 'articles#destroy', as: 'article_destroy'
+    delete ':id/delete' => 'articles#destroy', as: 'article_destroy'
   end
 
   # article sets
   scope 'set' do
     get 'new' => 'article_sets#new', as: 'article_set_new'
   end
+  
   resource :articles, only: [:create]
   get 'article/:id/edit' => 'articles#edit', as: 'edit_article'
   patch 'article/:id' => 'articles#update', as: 'update_article'
