@@ -40,3 +40,29 @@
   }
 
 }
+
+
+.article-content-styles {
+
+  p {
+    padding:5px 20px;
+    font-size:16px;
+  }
+
+  a {
+    font-size:17px;
+    text-decoration:underline;
+    color:$primary-color;
+    &:hover {
+      color:darken($primary-color, 20%);
+    }
+  }
+
+  h1 { font-size:41px; }
+  h2 { font-size:35px; }
+  h3 { font-size:30px; }
+  h4 { font-size:25px; }
+  h5 { font-size:20px; }
+  h6 { font-size:18px; }
+
+}

@@ -19,14 +19,18 @@ Blogee::Application.routes.draw do
     resource :article_comments
   end
 
+
+  ######## Static Routes
+  get 'about/' => 'pages#about', as: 'page_about'
+  get 'team/' => 'pages#team', as: 'page_team'
+  get 'features/' => 'pages#features', as: 'page_features'
+
+
   ######## Application Routes
   # admin
   namespace :admin do
     get '' => 'admin#index', as: 'admin'
   end
-
-  # users
-  get ':username' => 'users#show', as: 'user_profile'
 
   # dashboard
   scope 'dashboard' do
@@ -52,11 +56,8 @@ Blogee::Application.routes.draw do
   resource :article_sets
   resource :article_comments
 
-
-  ######## Static Routes
-  get 'about/' => 'pages#about', as: 'page_about'
-  get 'team/' => 'pages#team', as: 'page_team'
-  get 'features/' => 'pages#features', as: 'page_features'
+  # users
+  get ':username' => 'users#show', as: 'user_profile'
 
 
   ######## Changing routes based on guest or user status
