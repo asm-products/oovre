@@ -39,7 +39,8 @@ Blogee::Application.routes.draw do
   scope 'article' do 
     get 'new' => 'articles#new', as: 'article_new'
     get ':id' => 'articles#show', as: 'article'
-    get ':id/edit' => 'articles#show', as: 'article_edit'
+    get ':id/edit' => 'articles#edit', as: 'article_edit'
+    delete 'delete' => 'articles#destroy', as: 'article_destroy'
   end
 
   # article sets

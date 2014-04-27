@@ -7,6 +7,7 @@
     <%=	f.text_area :content, placeholder: "Write your story here..." %>
 
     <%=	f.submit "Save Changes", :class => 'button large' %>
+    <%= button_to "Delete", article_destroy_path, method: :delete, class: 'button alert' %>
 
   <% end %>
 </div>
