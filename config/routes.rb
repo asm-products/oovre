@@ -26,9 +26,7 @@ Blogee::Application.routes.draw do
   end
 
   # users
-  scope 'user' do
-    get ':username' => 'users#show', as: 'user_profile'
-  end
+  get ':username' => 'users#show', as: 'user_profile'
 
   # dashboard
   scope 'dashboard' do
