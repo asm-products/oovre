@@ -4,8 +4,9 @@
 
 <div class="profile-header">
 	<div class="cover-container">
+		<div class="cover" style="background-image:url(<%= @user.cover_image.url %>);"></div>
 		<% if @user.cover_image? %>
-			<%= image_tag @user.cover_image.url, :class => 'cover' %>
+			<!-- <%= image_tag @user.cover_image.url, :class => 'cover' %> -->
 		<% end %>
 		<div class="cover-overlay"></div>
 	</div>

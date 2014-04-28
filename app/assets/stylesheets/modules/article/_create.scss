@@ -46,8 +46,8 @@
   }
 }
 
-.overlay {
-  position:absolute;
+.editor-overlay {
+  position:fixed;
   z-index:500;
   display:none;
   top:0;
