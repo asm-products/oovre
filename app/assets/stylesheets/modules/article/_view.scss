@@ -44,6 +44,7 @@
 
 .article-content-styles {
 
+
   p {
     padding:5px 20px;
     font-size:16px;
@@ -58,11 +59,23 @@
     }
   }
 
-  h1 { font-size:41px; }
-  h2 { font-size:35px; }
-  h3 { font-size:30px; }
-  h4 { font-size:25px; }
-  h5 { font-size:20px; }
-  h6 { font-size:18px; }
+  h1 { font-size:41px; margin-bottom:25px; }
+  h2 { font-size:35px; margin-bottom:20px; }
+  h3 { font-size:30px; margin-bottom:18px; }
+  h4 { font-size:25px; margin-bottom:15px; }
+  h5 { font-size:20px; margin-bottom:10px; }
+  h6 { font-size:18px; margin-bottom:5px; }
+
+  ul {
+    display:block;
+    padding:5px 20px;
+    list-style:disc;
+  }
+
+  ol {
+    display:block;
+    padding:5px 20px;
+    list-style:decimal;
+  }
 
 }
