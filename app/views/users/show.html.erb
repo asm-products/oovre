@@ -43,25 +43,36 @@
 	</div>
 </div>
 
-<div class="articles-container">
-	<div class="articles">
-		<% for article in @user.recent_articles(9) do %>
-			<div class="article">
-				<a href="<%= article_path(article) %>">
+<div class="container">
+	<div class="user-articles">
+
+		<div class="articles">
+			<% @user.recent_articles(20).each do |article| %>
+				
+				<div class="article-card-1">
+					
 					<div class="article-container">
-						<div class="background">
-							<% if article.image? %>
-								<%= image_tag article.image.url(:small) %>
-							<% end %>
-						</div>
+						<% if article.image? %>
+							<div class="background">
+								<div class="user-information">
+									<a href="<%= user_profile_path(article.user.username) %>">
+										<div class="profile-image">
+											<span><%= article.user.name %></span>
+											<%= image_tag article.user.avatar.url(:thumb), class: 'avatar' %>
+										</div>
+									</a>
+								</div>
+								<div class="overlay"></div>
+								<%= image_tag article.image.url(:small), class: 'background-image' %>
+							</div>
+						<% end %>
 						<div class="title"><%= article.title %></div>
 						<div class="subtitle"><%= article.subtitle if !article.subtitle.blank? %></div>
-						<% if article.article_set %>
-							<%= link_to article.article_set.name, article_sets_path(article.article_set), class: 'article-set' %>
-						<% end %>
 					</div>
-				</a>
-			</div>
-		<% end %>
+					<a href="<%= article_path(article) %>"><div class="read-more">read more</div></a>
+				</div>
+			<% end %>
+		</div>
+
 	</div>
 </div>

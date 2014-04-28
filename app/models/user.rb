@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def recent_articles(count=5)
-    self.articles.first(count)
+    self.articles.recent.take(count)
   end
 
   def name

@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   def home
     @articles = Article.recent.take(20)
     if Article.today.trending_with_total.empty?
-      @trending = Article.recent.trending_with_total.take(5)
+      @trending = Article.recent.trending_with_unique.take(5)
     else
-      @trending = Article.today.trending_with_total.take(5)
+      @trending = Article.today.trending_with_unique.take(5)
     end
   end
 

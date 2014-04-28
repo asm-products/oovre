@@ -12,6 +12,9 @@ class Article < ActiveRecord::Base
   has_attached_file :image, :styles => { :large => "900x900>", :small => "300x300#" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  validates :title, presence: true
+  validates :content, presence: true
+
   belongs_to :user
   belongs_to :article_set
 

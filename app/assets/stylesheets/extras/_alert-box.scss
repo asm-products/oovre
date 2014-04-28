@@ -1,0 +1,32 @@
+.alert-box {
+  position:absolute;
+  right:10px;
+  top:55px;
+  padding:15px 20px;
+  font-family:'Lato', sans-serif;
+  font-size: 16px;
+  max-width:250px;
+  .close {
+    position:absolute;
+    top:5px;
+    right:10px;
+    font-size:12px;
+    color:#000;
+  }
+
+  &.error {
+    background-color:$alert-color;
+    border:1px solid darken($alert-color, 10%);
+    color:lighten($alert-color, 30%);
+  }
+  &.success {
+    background-color:$success-color;
+    border:1px solid darken($success-color, 10%);
+    color:#333;
+  }
+  &.notice {
+    background-color:$notice-color;
+    border:1px solid darken($notice-color, 10%);
+    color:#333;
+  }
+}

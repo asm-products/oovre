@@ -1,7 +1,18 @@
+.padded-top {
+  display:block;
+  position:relative;
+  height:50px;
+  background-color: transparent;
+  width:100%;
+}
 .header {
   height: 50px;
   background-color: #333;
   font-family: 'Lato', 'sans-serif';
+  position:fixed;
+  left:0;
+  right:0;
+  z-index:400;
 
   .header-content {
     height:50px;

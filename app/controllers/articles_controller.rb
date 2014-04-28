@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     if @article.save()
       redirect_to article_path(@article), notice: "Created article!"
     else
-      redirect_to new_article_path(@article), notice: "Could not save article."
+      redirect_to article_new_path(@article), notice: "Could not save article."
     end
   end
 

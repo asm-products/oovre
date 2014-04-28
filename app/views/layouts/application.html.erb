@@ -7,36 +7,36 @@
 		<title><%= content_for?(:title) ? yield(:title) : "Oovre" %></title>
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic' rel='stylesheet' type='text/css'>
 		<%= stylesheet_link_tag "application" %>
-		<%= stylesheet_link_tag "jquery.notebook.css" %>
 		<%= csrf_meta_tags %>
 	</head>
 
 	<body>
-
+		
 		<%= render 'layouts/header' %>
 		<% if flash[:error] %>
-			<div data-alert id="error" class="alert-box error">
+			<div data-alert id="alert-error" class="alert-box error">
 				<%= flash[:error] %>
 				<a class="close">x</a>
 			</div>
 		<% end %>
 
 		<% if flash[:notice] %>
-			<div data-alert id="notice" class="alert-box notice">
+			<div data-alert id="alert-notice" class="alert-box notice">
 				<%= flash[:notice] %>
 				<a class="close">x</a>
 			</div>
 		<% end %>
 
 		<% if flash[:success] %>
-			<div data-alert id="success" class="alert-box success">
+			<div data-alert id="alert-success" class="alert-box success">
 				<%= flash[:success] %>
 				<a class="close">x</a>
 			</div>
 		<% end %>
-
+		
 		<%= yield %>
-
+		
+		<%= render 'articles/new' %>
 		<%= javascript_include_tag "app" %>
 
 	</body>

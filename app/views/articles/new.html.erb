@@ -7,7 +7,7 @@
 			<%=	f.text_field :title, placeholder: "Title", class: "title" %>
 			<%= f.text_field :subtitle, placeholder: "Subtitle", class: "subtitle" %>
 			<%=	f.hidden_field :content, class: "content-editor-content" %>
-			<div id="content-editor">
+			<div id="content-editor" class="content-editor article-content-styles">
 			</div>
 			<%=	f.submit "Create Article", :class => 'button success' %>
 		<% end %>
