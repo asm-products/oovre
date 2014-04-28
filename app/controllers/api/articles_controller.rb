@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
 
-  # WHUT GOES HERE???!?!?!
+  def basic_stats
+    render :json => {
+      # some very basic stats for an article
+    }
+  end
 
 end

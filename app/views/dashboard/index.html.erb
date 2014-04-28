@@ -1,0 +1,39 @@
+<div class="container">
+	
+	<div class="section-title">Stats Today</div>
+	<div class="today-stats">
+		<div class="panel total-unique-views">
+			<div class="count"><%= @unique_views_today %></div>
+			<span>Unique Page Views</span>
+		</div>
+		<div class="panel total-views">
+			<div class="count"><%= @total_views_today %></div>
+			<span>Total Page Views</span>
+		</div>
+		<div class="panel total-activity-today">
+			<div class="count"><%= @articles_today.count %></div>
+			<span>Articles Created</span>
+		</div>
+	</div>
+
+<!-- 
+	<div class="article-listing">
+		<div class="recent-articles">
+			<% @articles_today.each do |article| %>
+				<div>
+					<div><%= article.title %></div>
+					<div><%= article.visit.unique_visits %></div>
+					<div><%= article.visit.total_visits %></div>
+				</div>
+			<% end %>
+		</div>
+	</div> -->
+
+</div>
+
+
+<div class="container">
+	<div class="more-soon">
+		More Stats Coming Soon!
+	</div>
+</div>

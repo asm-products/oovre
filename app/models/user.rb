@@ -36,6 +36,22 @@ class User < ActiveRecord::Base
     self.articles.recent.take(count)
   end
 
+  def article_views_unique_today
+    count = 0
+    self.articles.today.each do |a|
+      count = count + a.visit.unique_visits
+    end
+    count
+  end
+
+  def article_views_total_today
+    count = 0
+    self.articles.today.each do |a|
+      count = count + a.visit.total_visits
+    end
+    count
+  end
+
   def name
     "#{self.first_name} #{self.last_name}"
   end
