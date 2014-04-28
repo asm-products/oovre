@@ -12,7 +12,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    Visit.track(@article, request.remote_ip)
+    if user_signed_in? && current_user != @article.user
+      Visit.track(@article, request)
+    end
     @similar = @article.similar(5)
   end
 

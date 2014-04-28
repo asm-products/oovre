@@ -12,6 +12,7 @@
 			</div>
 			<%=	f.submit "Create Article", :class => 'button success' %>
 		<% end %>
+		<%= button_to "Delete", article_destroy_path, method: :delete, confirm: "Are you sure you want to delete this article?" %>
 	</div>
 
 	<div id="triggerEditorClose" class="close"><i class="fa fa-times"></i></div>

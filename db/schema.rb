@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415161316) do
+ActiveRecord::Schema.define(version: 20140428210352) do
 
   create_table "article_comments", force: true do |t|
     t.integer  "article_id"
@@ -113,6 +113,8 @@ ActiveRecord::Schema.define(version: 20140415161316) do
     t.string   "ip_address", limit: 15
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "referrer"
+    t.string   "user_agent"
   end
 
   add_index "visit_details", ["ip_address"], name: "index_visit_details_on_ip_address"

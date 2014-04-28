@@ -10,7 +10,11 @@
 		</div>
 		<div class="subtitle"><%= @article.subtitle if @article.subtitle.present? %></div>
 		<div class="content article-content-styles">
-			<%= sanitize @article.content.html_safe, attributes: %w(href class id) %>
+			<%= sanitize @article.content.html_safe, tags: %w(p div b u i a h1 h2 h3 h4 h5 ul ol li), attributes: %w(href class id) %>
+		</div>
+		DEBUG STUFFS:
+		<div class="content">
+			<%= @article.content %>
 		</div>
 	</div>
 
