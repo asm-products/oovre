@@ -1,8 +1,6 @@
 class Article < ActiveRecord::Base
   # default_scope { order("created_at DESC") }
 
-  before_save :sanitize_content_attrs
-
   scope :recent, -> { order("created_at DESC") }
   scope :today, -> { where("articles.created_at >= ? and articles.created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day) }
   scope :with_visits, lambda { joins(:visit) }
@@ -23,10 +21,6 @@ class Article < ActiveRecord::Base
 
   def similar(count=5)
     Article.where(["title LIKE ?", self.title]).where.not(title: self.title).take(count)
-  end
-
-  def sanitize_content_attrs
-    self.content = sanitize(self.content, attributes: %w(contenteditable))
   end
 
 end
