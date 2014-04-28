@@ -4,7 +4,10 @@
 		<div class="background-image"><%= image_tag @article.image.url(:large) %></div>
 	<% end %>
 	<div class="container article-container">
-		<div class="title"><%= @article.title %></div>
+		<div class="title">
+			<%= @article.title %> 
+			<% if user_signed_in? && current_user == @article.user %><a class="ghost primary" id="edit_article_btn">Edit</a><% end %>
+		</div>
 		<div class="subtitle"><%= @article.subtitle if @article.subtitle.present? %></div>
 		<div class="content article-content-styles">
 			<%= sanitize @article.content.html_safe, attributes: %w(href class id) %>
@@ -12,3 +15,7 @@
 	</div>
 
 </div>
+
+<% if user_signed_in? && current_user == @article.user %>
+	<%= render 'articles/edit' %>
+<% end %>

@@ -25,6 +25,14 @@
           height:150px;
           position:relative;
           overflow:hidden;
+          .time-ago {
+            z-index:300;
+            font-size:13px;
+            position:absolute;
+            top:5px;
+            right:5px;
+            color:#FFF;
+          }
           .user-information {
             z-index:300;
             position:absolute;

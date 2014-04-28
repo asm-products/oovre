@@ -1,0 +1,18 @@
+<div id="articleEditor" class="article-creator">
+
+	<div class="content-creation">
+		<%= form_for @article do |f| %>
+			<%= f.collection_select(:article_set_id, ArticleSet.all, :id, :name) %>
+			<%= f.file_field :image, class: "image-upload" %>
+			<%=	f.text_field :title, placeholder: "Title", class: "title" %>
+			<%= f.text_field :subtitle, placeholder: "Subtitle", class: "subtitle" %>
+			<%=	f.hidden_field :content, class: "content-editor-content" %>
+			<div id="content-editor" class="content-editor article-content-styles">
+				<%= @article.content.html_safe %>
+			</div>
+			<%=	f.submit "Create Article", :class => 'button success' %>
+		<% end %>
+	</div>
+
+	<div id="triggerEditorClose" class="close"><i class="fa fa-times"></i></div>
+</div>

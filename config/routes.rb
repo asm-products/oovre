@@ -40,7 +40,7 @@ Blogee::Application.routes.draw do
   # articles
   scope 'article' do 
     get 'new' => 'articles#new', as: 'article_new'
-    # get ':id' => 'articles#show', as: 'article'
+    get ':id' => 'articles#show', as: 'article'
     get ':id/edit' => 'articles#edit', as: 'article_edit'
     delete ':id/delete' => 'articles#destroy', as: 'article_destroy'
   end
@@ -56,11 +56,6 @@ Blogee::Application.routes.draw do
   delete 'article/:id' => 'articles#destroy', as: 'article_delete'
   resource :article_sets
   resource :article_comments
-
-  scope 'a' do
-    get ':id' => 'articles#show', as: 'article'
-  end
-  # get 'a/:id' => 'articles#show', as: 'article'
 
   # users
   get ':username' => 'users#show', as: 'user_profile'
