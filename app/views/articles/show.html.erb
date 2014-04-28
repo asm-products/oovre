@@ -7,7 +7,7 @@
 		<div class="title"><%= @article.title %></div>
 		<div class="subtitle"><%= @article.subtitle if @article.subtitle.present? %></div>
 		<div class="content article-content-styles">
-			<%= @article.content.html_safe %>
+			<%= sanitize @article.content.html_safe, attributes: %w(contenteditable) %>
 		</div>
 	</div>
 
