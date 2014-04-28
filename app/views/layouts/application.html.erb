@@ -36,7 +36,9 @@
 		
 		<%= yield %>
 		
-		<%= render 'articles/new' %>
+		<% if user_signed_in? %>
+			<%= render 'articles/new' %>
+		<% end %>
 		<%= javascript_include_tag "app" %>
 
 	</body>
