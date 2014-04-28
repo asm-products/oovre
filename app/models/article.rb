@@ -26,7 +26,7 @@ class Article < ActiveRecord::Base
   end
 
   def sanitize_content_attrs
-    self.content = sanitize(this.content, attributes: %w(contenteditable))
+    self.content = sanitize(self.content, attributes: %w(contenteditable))
   end
 
 end
