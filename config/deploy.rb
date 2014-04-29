@@ -45,7 +45,6 @@ namespace :deploy do
 
   after :finishing, 'deploy:cleanup'
   after 'deploy:publishing', 'deploy:restart'
-  after "deploy:update_code", "deploy:migrate"
 
   # after :restart, :clear_cache do
   #   on roles(:web), in: :groups, limit: 3, wait: 10 do

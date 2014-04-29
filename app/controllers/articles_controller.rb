@@ -12,9 +12,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    if user_signed_in? && current_user != @article.user
-      Visit.track(@article, request)
-    end
+    Visit.track(@article, request)
+    @more_from = Article.where(user: @article.user).recent.take(3)
     @similar = @article.similar(5)
   end
 

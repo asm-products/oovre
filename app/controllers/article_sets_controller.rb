@@ -12,6 +12,7 @@ class ArticleSetsController < ApplicationController
   def create
     @article_set = current_user.article_sets.new(set_params)
     @article_set.save
+    redirect_to @article_set
   end
 
   private

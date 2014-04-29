@@ -12,8 +12,40 @@
 		<div class="content article-content-styles">
 			<%= sanitize @article.content.html_safe, tags: %w(p div b u i a h1 h2 h3 h4 h5 ul ol li br), attributes: %w(href class id) %>
 		</div>
-	</div>
 
+		<div class="divider"></div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="section-title">More From <%= @article.user.name %></div>
+	<div class="user-articles">
+		<div class="articles">
+			<% @more_from.each do |article| %>
+				<div class="article-card-1">
+					<div class="article-container">
+						<% if article.image? %>
+							<div class="background">
+								<div class="user-information">
+									<a href="<%= user_profile_path(article.user.username) %>">
+										<div class="profile-image">
+											<span><%= article.user.name %></span>
+											<%= image_tag article.user.avatar.url(:thumb), class: 'avatar' %>
+										</div>
+									</a>
+								</div>
+								<div class="overlay"></div>
+								<%= image_tag article.image.url(:small), class: 'background-image' %>
+							</div>
+						<% end %>
+						<div class="title"><%= article.title %></div>
+						<div class="subtitle"><%= article.subtitle if !article.subtitle.blank? %></div>
+					</div>
+					<a href="<%= article_path(article) %>"><div class="read-more">read more</div></a>
+				</div>
+			<% end %>
+		</div>
+	</div>
 </div>
 
 <% if user_signed_in? && current_user == @article.user %>
