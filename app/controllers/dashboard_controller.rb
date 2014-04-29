@@ -7,4 +7,8 @@ class DashboardController < ApplicationController
     @unique_views_today = current_user.article_views_unique_today
   end
 
+  def article
+    @article = Article.find(params[:id])
+  end
+
 end

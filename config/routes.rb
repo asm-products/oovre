@@ -35,6 +35,7 @@ Blogee::Application.routes.draw do
   # dashboard
   scope 'dashboard' do
     get '' => 'dashboard#index', as: 'user_dashboard'
+    get 'article/:id' => 'dashboard#article', as: 'article_stats'
   end
 
   # articles

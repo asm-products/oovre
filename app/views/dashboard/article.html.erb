@@ -1,0 +1,29 @@
+<div class="container">
+	
+	<div class="section-title"><%= @article.title %> | <b>Stats</b></div>
+	<div class="today-stats">
+		<div class="panel total-unique-views">
+			<div class="count"><%= @article.visit.unique_visits %></div>
+			<span>Unique Page Views</span>
+		</div>
+		<div class="panel total-views">
+			<div class="count"><%= @article.visit.total_visits %></div>
+			<span>Total Page Views</span>
+		</div>
+	</div>
+
+</div>
+
+
+<div class="container">
+	<div class="visit_details">
+	<% @article.visit.visit_details.each do |visit| %>
+		<div class="visit">
+			<div class="ip-address">IP: <%= visit.ip_address %></div>
+			<div class="referrer">REF: <%= visit.referrer %></div>
+			<div class="user-agent">BR: <%= visit.user_agent %></div>
+			<div class="created-at">TIME: <%= visit.created_at %></div>
+		</div>
+	<% end %>
+	</div>
+</div>
