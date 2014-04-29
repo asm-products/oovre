@@ -11,7 +11,7 @@ class Visit < ActiveRecord::Base
         visit.increment!(:total_visits)
         visit_detail = visit.visit_details.create(
             :ip_address => request.remote_ip, 
-            :referrer => request.env["HTTP_REFERRER"], 
+            :referrer => request.env["HTTP_REFERER"], 
             :user_agent => request.env["HTTP_USER_AGENT"]
         )
     end
