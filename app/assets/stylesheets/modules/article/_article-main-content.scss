@@ -1,0 +1,45 @@
+.article-main-content {
+  margin-top:100px;
+  
+  h1 { font-size:40px; margin-bottom:15px; }
+  h2 { font-size:30px; margin-bottom:15px; }
+
+  p {
+    line-height:1.4;
+    font-size:20px;
+    margin-bottom:20px;
+    
+    &.image {
+      img {
+        display:block;
+        position:relative;
+        margin:0 auto;
+        max-width:100%;
+      }
+    }
+
+    a {
+      font-size:22px;
+      color:$primary-color;
+      -webkit-transition: color 200ms ease;
+      -moz-transition: color 200ms ease;
+      -ms-transition: color 200ms ease;
+      -o-transition: color 200ms ease;
+      transition: color 200ms ease;
+      &:hover {
+        color:darken($primary-color, 20%);
+      }
+    }
+
+  }
+
+  ul, ol { margin:5px 15px; padding:10px 30px; font-size:20px;
+    li {
+      padding:8px 0px;
+    }
+  }
+
+  ol { list-style: decimal; }
+  ul { list-style: disc; }
+
+}

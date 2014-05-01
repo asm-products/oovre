@@ -24,9 +24,9 @@
 			<%= f.label :password %><small>leave blank, if you do not wish to change it</small>
 			<%= f.password_field :password, autocomplete: "off" %>
 			<%= f.label :password_confirmation %>
-			<%= f.password_field :password_confirmation %>
+			<%= f.password_field :password_confirmation, autocomplete: "off" %>
 			<%= f.label :current_password %>
-			<%= f.password_field :current_password %>
+			<%= f.password_field :current_password, autocomplete: "off" %>
 		</fieldset>
 
 		<%= f.submit "Save changes", :class => 'button small success' %>

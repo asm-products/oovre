@@ -1,4 +1,4 @@
-<div class="header">
+<!-- <div class="header">
 
 	<div class="header-content">
 		<a href="<%= user_home_path %>" class="logo left">
@@ -37,7 +37,6 @@
 
 		<% end %> 
 
-<!-- 
 		<% if user_signed_in? %>
 			<div class="navigation left">
 				<ul>
@@ -66,8 +65,35 @@
 				</ul>
 			</div>
 		<% end %>
- -->
 	</div>
 
 </div>
+<div class="padded-top"></div> -->
+
+
+<div class="header">
+	
+	<div class="hc-container">
+		<a href="<%= user_home_path %>" class="logo"><%= image_tag "oovre-logo.png" %></a>
+		<ul class="navigation">
+			<li><%= link_to "Home", user_home_path %></li>
+			<li><a href="#">Explore</a></li>
+			<li><%= link_to "Dashboard", user_dashboard_path %></li>
+		</ul>
+		<div class="user-nav">
+			<div class="new-article"><a id="new_article_btn" class="ghost">New Article</a></div>
+			<div class="user-profile">
+				<a href="<%= user_profile_path(current_user.username) %>"><%= image_tag current_user.avatar.url(:thumb), class: 'avatar' %></a>
+				<div class="dropdown">
+					<ul>
+						<li><%= link_to "Settings", edit_user_registration_path %></li>
+						<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
 <div class="padded-top"></div>

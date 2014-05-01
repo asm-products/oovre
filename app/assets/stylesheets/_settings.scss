@@ -1,11 +1,16 @@
+@import "extras/reset";
+
 $susy: 12;
 
-// Colors ...................
+// Main Colors
 $primary-color: #428bca;
 $alert-color: #d9534f;
 $success-color: #5cb85c;
 $notice-color: #5bc0de;
 
-body {
-  background-color:#eee;
-}
+// Other Colors
+$bg-body: #EEE;
+$bg-header: #333;
+
+// Article Card Colors
+$ac1-color: #FFF;

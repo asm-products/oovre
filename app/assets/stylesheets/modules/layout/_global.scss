@@ -1,8 +1,11 @@
-.container {
-  @include container(60em);
-
+body {
+  background-color:$bg-body;
 }
 
-.content-container {
-  padding:25px 0px;
+.padded-top {
+  display:block;
+  position:relative;
+  height:50px;
+  background-color: transparent;
+  width:100%;
 }

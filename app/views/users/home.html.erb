@@ -1,54 +1,26 @@
-<div class="container content-container">
+<div class="container">
 	
-	<div class="sidebar">
-		<!-- <div class="search">
-			<input type="text" class="search-bar">
-		</div> -->
-		<div class="trending-articles">
-			<div class="title">Trending Articles</div>
-			<div class="articles">
-				<% @trending.each do |article| %>
-					<div class="article">
-						<a href="<%= article_path(article) %>"><%= article.title %></a>
-					</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+	<div class="sidebar col-3">TRENDING ARTICLES</div>
 
-	<div class="recent-articles">
-
-		<div class="articles">
-			<% @articles.each do |article| %>
-				
-				<div class="article-card-1">
-					
-					<div class="article-container">
-						<% if article.image? %>
-							<div class="background">
-								<div class="user-information">
-									<div class="time-ago">
-										<%= time_ago_in_words(article.created_at) %>
-									</div>
-									<a href="<%= user_profile_path(article.user.username) %>" class="user">
-										<div class="profile-image">
-											<span><%= article.user.name %></span>
-											<%= image_tag article.user.avatar.url(:thumb), class: 'avatar' %>
-										</div>
-									</a>
-								</div>
-								<div class="overlay"></div>
-								<%= image_tag article.image.url(:small), class: 'background-image' %>
-							</div>
-						<% end %>
-						<div class="title"><%= article.title %></div>
-						<div class="subtitle"><%= article.subtitle if !article.subtitle.blank? %></div>
+	<div class="article-stream col-9">
+		<% @articles.each do |article| %>
+			<div class="article-card-1 col-6">
+				<div class="article">
+					<div class="info" style="background:url('<%= article.image.url(:large) if article.image? %>') no-repeat center center;">
+						<!-- <div class="time"><%= time_ago_in_words(article.created_at) %></div> -->
+						<div class="user">
+							<div class="name"><%= article.user.name %></div>
+							<%= image_tag article.user.avatar.url(:thumb), class: 'profile-img' %>
+						</div>
+						<div class="overlay"></div>
 					</div>
-					<a href="<%= article_path(article) %>"><div class="read-more">read more</div></a>
+					<div class="av-info">
+						<a href="<%= article_path(article) %>"><div class="title"><%= article.title %></div></a>
+						<div class="subtitle"><%= article.subtitle %></div>
+					</div>
 				</div>
-			<% end %>
-		</div>
-
+			</div>
+		<% end %>
 	</div>
 
 </div>
