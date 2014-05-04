@@ -12,10 +12,9 @@
 		</div>
 		<div class="col-4 info">
 			<!-- <div class="social-share">SHARE BUTTONS HERE EVENTUALLY</div> -->
-			<div class="time-set"><%= time_ago_in_words(@article.created_at) %> ago</div>
+			<div class="time-set">published <%= time_ago_in_words(@article.created_at) %> ago</div>
 			<div class="user-info">
-				<div class="name"><%= @article.user.name %></div>
-				<%= image_tag @article.user.avatar.url(:thumb), class: 'profile-img' %>
+				Created by <a href="<%= user_profile_path(@article.user.username) %>"><%= @article.user.name %></a>
 			</div>
 		</div>
 
@@ -26,7 +25,45 @@
 		<div class="col-8 push-2 article-main-content">
 			<%= sanitize @article.content.html_safe, tags: %w(p div b u i a h1 h2 h3 h4 h5 ul ol li br), attributes: %w(href class id) %>
 		</div>
+		<div class="col-8 push-2 actions">
+			<hr class="divider">
+			<div class="col-6">
+				<div class="donate">
+					<p class="like">Like this article?</p>
+					<p class="donation">Make a <a href="#">Donation</a> to <%= @article.user.first_name %>.</p>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="action"><i class="fa fa-share"></i><div class="number">
+					
+				</div></div>
+				<div class="action"><i class="fa fa-heart"></i></div>
+			</div>
+		</div>
 
+	</div>
+</div>
+
+<div class="container">
+	<div class="section-title">More From <%= @article.user.name %></div>
+	<div class="user-articles">
+		<div class="articles">
+			<% @more_from.delete(@article) %>
+			<% @more_from.each do |article| %>
+				<% @article = article %>
+				<%= render 'articles/cards/article1' %>
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="section-title">More like this</div>
+	<div class="recommended-article">
+		<%= render 'articles/cards/article3' %>
+	</div>
+
+	<div class="section-title">Recommended</div>
+	<div class="recommended-article">
+		<%= render 'articles/cards/article3' %>
 	</div>
 </div>
 

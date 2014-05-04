@@ -1,38 +1,38 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 <div class="container account-settings">
 	<div class="section-title">Edit my account</div>
-	<div class="basic">
+	<div class="basic col-6">
 		<%= devise_error_messages! %>
 
 		<%= f.label :first_name %>
-		<%= f.text_field :first_name %>
+		<%= f.text_field :first_name %> <br>
 
 		<%= f.label :last_name %>
-		<%= f.text_field :last_name %>
+		<%= f.text_field :last_name %><br>
 
 		<%= f.label :username %>
-		<%= f.text_field :username %>
+		<%= f.text_field :username %><br>
 
 		<%= f.label :email %>
-		<%= f.email_field :email %>
+		<%= f.email_field :email %><br>
 
 		<%= f.label :bio %>
-		<%= f.text_area :bio %>
+		<%= f.text_area :bio %><br>
 
 		<fieldset>
 			<legend>Change Password</legend>
 			<%= f.label :password %><small>leave blank, if you do not wish to change it</small>
-			<%= f.password_field :password, autocomplete: "off" %>
+			<%= f.password_field :password, autocomplete: "off" %><br>
 			<%= f.label :password_confirmation %>
-			<%= f.password_field :password_confirmation, autocomplete: "off" %>
+			<%= f.password_field :password_confirmation, autocomplete: "off" %><br>
 			<%= f.label :current_password %>
-			<%= f.password_field :current_password, autocomplete: "off" %>
+			<%= f.password_field :current_password, autocomplete: "off" %><br>
 		</fieldset>
 
-		<%= f.submit "Save changes", :class => 'button small success' %>
+		<%= f.submit "Save changes", :class => 'button small success' %><br>
 	</div>
 
-	<div class="files">
+	<div class="files col-6">
 		<div class="avatar">
 			<%= f.label :avatar %>
 			<%= f.file_field :avatar %>

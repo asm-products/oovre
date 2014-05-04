@@ -38,7 +38,11 @@ Blogee::Application.routes.draw do
     get 'article/:id' => 'dashboard#article', as: 'article_stats'
   end
 
+  #explore
+  get 'explore' => 'explore#index', as: 'explore'
+
   # articles
+  resource :articles, only: [:create]
   scope 'article' do 
     get 'new' => 'articles#new', as: 'article_new'
     get ':id' => 'articles#show', as: 'article'
@@ -51,7 +55,6 @@ Blogee::Application.routes.draw do
     get 'new' => 'article_sets#new', as: 'article_set_new'
   end
   
-  resource :articles, only: [:create]
   get 'article/:id/edit' => 'articles#edit', as: 'edit_article'
   patch 'article/:id' => 'articles#update', as: 'update_article'
   delete 'article/:id' => 'articles#destroy', as: 'article_delete'

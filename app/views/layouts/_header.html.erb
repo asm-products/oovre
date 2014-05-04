@@ -75,6 +75,7 @@
 	
 	<div class="hc-container">
 		<a href="<%= user_home_path %>" class="logo"><%= image_tag "oovre-logo.png" %></a>
+		<% if user_signed_in? %>
 		<ul class="navigation">
 			<li><%= link_to "Home", user_home_path %></li>
 			<li><a href="#">Explore</a></li>
@@ -92,6 +93,13 @@
 				</div>
 			</div>
 		</div>
+		<% else %>
+		<ul class="navigation">
+			<li><%= link_to "Home", user_home_path %></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Contact Us</a></li>
+		</ul>
+		<% end %>
 	</div>
 
 </div>
