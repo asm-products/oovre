@@ -107,10 +107,10 @@ if (typeof module === 'object') {
             disableReturn: false,
             disableDoubleReturn: false,
             disableToolbar: false,
-            firstHeader: 'h3',
+            firstHeader: 'h1',
             forcePlainText: true,
             placeholder: 'Type your text',
-            secondHeader: 'h4',
+            secondHeader: 'h2',
             targetBlank: false,
             extensions: {}
         },

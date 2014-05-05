@@ -5,19 +5,25 @@
 	<div class="article-stream col-9">
 		<% @articles.each do |article| %>
 			<div class="article-card-1 col-6">
+				<% if article.image? %>
+				<div class="article" style="background:url('<%= article.image.url(:large) %>') no-repeat center center;">
+				<% else %>
 				<div class="article">
-					<div class="info" style="background:url('<%= article.image.url(:large) if article.image? %>') no-repeat center center;">
+				<% end %>
+				
+					<div class="info">
 						<!-- <div class="time"><%= time_ago_in_words(article.created_at) %></div> -->
 						<div class="user">
 							<div class="name"><%= article.user.name %></div>
 							<%= image_tag article.user.avatar.url(:thumb), class: 'profile-img' %>
 						</div>
-						<div class="overlay"></div>
 					</div>
 					<div class="av-info">
 						<a href="<%= article_path(article) %>"><div class="title"><%= article.title %></div></a>
-						<div class="subtitle"><%= article.subtitle %></div>
 					</div>
+					<% if article.image? %>
+						<div class="overlay"></div>
+					<% end %>
 				</div>
 			</div>
 		<% end %>
