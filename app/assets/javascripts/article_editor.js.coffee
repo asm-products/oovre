@@ -17,3 +17,9 @@ $(document).ready ->
 
 	$('.content-editor').on 'input', ->
 		$('.content-editor-content').val $(this).html()
+
+	$('#new_article').on('ajax:success', (e, data, status, xhr) ->
+		if data.status != "success"
+			alert data.message
+	).on 'ajax:error', (e, xhr, status, error) ->
+		alert "Oops. Something went wrong..."

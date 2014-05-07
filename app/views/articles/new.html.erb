@@ -1,46 +1,21 @@
-<div id="articleCreator" class="article-creator">
+<div id="articleCreator" class="article-creator test-article-creator">
 
 	<div class="content-creation">
 		<%= form_for current_user.articles.new do |f| %>
-			<%= f.collection_select(:article_set_id, ArticleSet.all, :id, :name) %>
+			<%= f.collection_select(:article_set_id, current_user.article_sets, :id, :name) %>
 			<%= f.file_field :image, class: "image-upload" %>
 			<%=	f.text_field :title, placeholder: "Title", class: "title" %>
 			<%= f.text_field :subtitle, placeholder: "Subtitle", class: "subtitle" %>
 			<%=	f.hidden_field :content, class: "content-editor-content" %>
-			<div id="content-editor" class="content-editor article-content-styles">
-			</div>
-			<%=	f.submit "Create Article", :class => 'button success' %>
+
+			<div id="content-editor" class="content-editor article-main-content"></div>
+
+			<%=	f.button "Save & Publish", :class => 'button success publish' %>
+			<%=	f.button "Save & Edit Later", :class => 'button success save' %>
 		<% end %>
 	</div>
 
+	<div id="triggerArticleClose" class="close"><i class="fa fa-times"></i></div>
 </div>
 
-<%= link_to "x", :back, class: 'close' %>
-<div class="overlay"></div>
-
-<!-- <div class="container content-creation">
-	<button id="add_link">Add Link</button>
-	<div id="content-editor" class="content-editor article-content-styles">
-	</div>
-</div> -->
-
-<!-- <div class="article-editor">
-
-	<%= form_for @article do |f| %>
-
-		<%= f.collection_select(:article_set_id, ArticleSet.all, :id, :name) %>
-
-		<%= f.file_field :image, class: "image-upload" %>
-		<%=	f.text_field :title, placeholder: "Title", class: "title" %>
-		<%= f.text_field :subtitle, placeholder: "Subtitle", class: "subtitle" %>
-			
-		<%=	f.hidden_field :content, class: "content-editor-content" %>
-		<div id="content-editor">
-		</div>
-
-		<%=	f.submit "Create Article", :class => 'button small' %>
-
-	<% end %>
-
-</div>
- -->
+<div id="overlay" class="editor-overlay"></div>

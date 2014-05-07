@@ -1,3 +1,7 @@
+.test-article-creator {
+  display:block !important;
+}
+
 .article-creator {
   @include container(60em);
   position:absolute;

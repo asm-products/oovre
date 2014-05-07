@@ -19,16 +19,31 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.new(article_params)
+
     if @article.save()
-      redirect_to article_path(@article), notice: "Created article!"
+      status = :created
+      message = "Article created successfully!"
     else
-      redirect_to article_new_path(@article), notice: "Could not save article."
+      status = :unprocessible_entity
+      message = "Could not create article. Missing some required fields?"
+    end
+
+    respond_to do |format|
+      format.json { render :json => { 
+        status: status, 
+        message: message,
+        update_location: update_article_path(@article),
+        article: @article } 
+      }
     end
   end
 
   def update
     if @article.update_attributes(article_params)
-      redirect_to article_path(@article)
+      respond_to do |format|
+        format.html
+        format.json {  }
+      end
     end
   end
 
@@ -46,7 +61,7 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.require(:article).permit(:title, :subtitle, :content, :image, :article_set_id)
+      params.require(:article).permit(:title, :subtitle, :content, :image, :article_set_id, :status)
     end
 
 end

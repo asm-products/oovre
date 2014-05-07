@@ -26,4 +26,9 @@ class Article < ActiveRecord::Base
     Article.where(["title LIKE ?", self.title]).where.not(title: self.title).take(count)
   end
 
+  # Add later when we know how to use it...
+  # def to_param
+  #   self.title.parameterize
+  # end
+
 end
