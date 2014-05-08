@@ -3,14 +3,12 @@ class ArticlesController < ApplicationController
   before_action :get_article, only: [:basic_stats]
 
   def basic_stats
-    unique_visits = article.visit.unique_visits
-    total_visits = article.visit.total_visits
+    unique_visits = article.visit.unique_visits rescue 0
+    total_visits = article.visit.total_visits rescue 0
 
     render :json => {
-      article: {
-        info: article,
-        user: article.user
-      }
+      info: article,
+      user: article.user,
       unique_visits: unique_visits,
       total_visits: total_visits
     }
