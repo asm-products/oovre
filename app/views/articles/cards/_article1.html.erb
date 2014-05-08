@@ -20,6 +20,6 @@
 		<div class="title"><%= @article.title %></div>
 		<div class="subtitle"><%= @article.subtitle if !@article.subtitle.blank? %></div>
 	</div>
-	<a href="<%= article_path(@article) %>"><div class="read-more">read more</div></a>
+	<a href="<%= article_show_path(@article) %>"><div class="read-more">read more</div></a>
 
 </div>

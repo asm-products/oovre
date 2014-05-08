@@ -23,7 +23,29 @@ class Article < ActiveRecord::Base
   has_many :tags
 
   def similar(count=5)
-    Article.where(["title LIKE ?", self.title]).where.not(title: self.title).take(count)
+    Article.all.take(count)
+  end
+
+  def more_from_author(count=5)
+    articles = Article.where(user: self.user).recent.take(count)
+    articles.delete(self)
+    articles
+  end
+
+  def recommended
+    Article.find(9)
+  end
+
+  def can_edit?(user)
+    (self.user == user) ? true : false
+  end
+
+  def can_delete(user)
+    (self.user == user) ? true : false
+  end
+
+  def to_param
+    "#{id}-#{title.parameterize}"
   end
 
   # Add later when we know how to use it...

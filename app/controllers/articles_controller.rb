@@ -1,61 +1,60 @@
 class ArticlesController < ApplicationController
-  before_action :get_article, only: [:show, :edit, :update, :destroy]
+
+  before_action :get_article
 
   def new
-    @article = current_user.articles.new
   end
 
   def edit
-    if current_user != @article.user
-      redirect_to user_home_path, notice: "You can't edit this article."
-    end
   end
 
   def show
     Visit.track(@article, request)
-    @more_from = Article.where(user: @article.user).recent.take(3)
-    @similar = @article.similar(5)
   end
 
   def create
-    @article = current_user.articles.new(article_params)
-
     if @article.save()
-      status = :created
-      message = "Article created successfully!"
+      respond_to do |f|
+        f.html
+        f.json { 
+          render :json => { status: :created, message: "Successfully created article.", article: @article } 
+        }
+      end
     else
-      status = :unprocessible_entity
-      message = "Could not create article. Missing some required fields?"
-    end
-
-    respond_to do |format|
-      format.json { render :json => { 
-        status: status, 
-        message: message,
-        update_location: update_article_path(@article),
-        article: @article } 
-      }
+      respond_to do |f|
+        f.html
+        f.json { 
+          render :json => { status: :unprocessible_entity, message: "Oops... something went wrong, please try again." } 
+        }
+      end
     end
   end
 
   def update
     if @article.update_attributes(article_params)
-      respond_to do |format|
-        format.html
-        format.json {  }
+      respond_to do |f|
+        f.html
+        f.json { render :json => { status: :ok, message: "Successfully updated article!" } }
+      end
+    else
+      respond_to do |f|
+        f.html
+        f.json { render :json => { status: :ok, message: "Oops... Something went wrong, we're working on it." } }
       end
     end
   end
 
   def destroy
-    if current_user == @article.user
+    if @article.can_delete?(current_user)
       @article.destroy
-      redirect_to user_home_path, notice: "Successfully deleted this article."
+      redirect_to user_home_path, notice: "Deleted this article."
+    else
+      redirect_to @articled, notice: "You cannot delete this article."
     end
   end
 
   def get_article
-    @article = Article.find(params[:id])
+    @article = Article.find(params[:id].to_i)
   end
 
   private

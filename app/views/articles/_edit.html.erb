@@ -1,7 +1,7 @@
 <div id="articleEditor" class="article-creator">
 
 	<div class="content-creation">
-		<%= form_for @article do |f| %>
+		<%= form_for @article, url: articles_path do |f| %>
 			<%= f.collection_select(:article_set_id, current_user.article_sets, :id, :name) %>
 			<%= f.file_field :image, class: "image-upload" %>
 			<%=	f.text_field :title, placeholder: "Title", class: "title" %>
@@ -12,7 +12,7 @@
 			</div>
 			<%=	f.submit "Save Changes", :class => 'button success' %>
 		<% end %>
-		<%= button_to "Delete", article_destroy_path, method: :delete %>
+		<%= button_to "Delete", articles_path, method: :delete %>
 	</div>
 
 	<div id="triggerEditorClose" class="close"><i class="fa fa-times"></i></div>

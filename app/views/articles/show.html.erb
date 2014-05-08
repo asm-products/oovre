@@ -1,3 +1,9 @@
+<% if @article.can_edit?(current_user) %>
+	<%= render 'articles/edit' %>
+<% end %>
+
+<% @main_article = @article %>
+
 <div class="article-view">
 
 	<% if @article.image? %>
@@ -5,7 +11,7 @@
 	<% end %>
 
 	<div class="container">
-		
+		<% if @article.can_edit?(current_user) %><a class="ghost primary" id="edit_article_btn">Edit</a><% end %>
 		<div class="col-8 av-info">
 			<div class="title"><%= @article.title %></div>
 			<div class="subtitle"><%= @article.subtitle %></div>
@@ -42,8 +48,7 @@
 	<div class="section-title">More From <%= @article.user.name %></div>
 	<div class="user-articles">
 		<div class="articles">
-			<% @more_from.delete(@article) %>
-			<% @more_from.each do |article| %>
+			<% @article.more_from_author(3).each do |article| %>
 				<% @article = article %>
 				<%= render 'articles/cards/article1' %>
 			<% end %>
@@ -51,41 +56,9 @@
 	</div>
 	
 	<div class="section-title">More like this</div>
-	<div class="recommended-article">
-		<%= render 'articles/cards/article3' %>
-	</div>
-
-	<div class="section-title">Recommended</div>
-	<div class="recommended-article">
-		<%= render 'articles/cards/article3' %>
-	</div>
-</div>
-
-<!-- <div class="article-view">
-	
-	<% if @article.image? %>
-		<div class="background-image" style="background-image:url(<%= @article.image.url(:large) %>);"></div>
-	<% end %>
-	<div class="container article-container">
-		<div class="title">
-			<%= @article.title %> 
-			<% if user_signed_in? && current_user == @article.user %><a class="ghost primary" id="edit_article_btn">Edit</a><% end %>
-		</div>
-		<div class="subtitle"><%= @article.subtitle if @article.subtitle.present? %></div>
-		<div class="content article-content-styles">
-			<%= sanitize @article.content.html_safe, tags: %w(p div b u i a h1 h2 h3 h4 h5 ul ol li br), attributes: %w(href class id) %>
-		</div>
-
-		<div class="divider"></div>
-	</div>
-</div>
-
-<div class="container">
-	<div class="section-title">More From <%= @article.user.name %></div>
 	<div class="user-articles">
 		<div class="articles">
-			<% @more_from.delete(@article) %>
-			<% @more_from.each do |article| %>
+			<% @article.similar(3).each do |article| %>
 				<% @article = article %>
 				<%= render 'articles/cards/article1' %>
 			<% end %>
@@ -94,10 +67,9 @@
 
 	<div class="section-title">Recommended</div>
 	<div class="recommended-article">
-		<%= render 'articles/cards/article3' %>
+		<div class="articles">
+			<% @article = @main_article.recommended %>
+			<%= render 'articles/cards/article3' %>
+		</div>
 	</div>
 </div>
--->
-<% if user_signed_in? && current_user == @article.user %>
-	<%= render 'articles/edit' %>
-<% end %>
