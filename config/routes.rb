@@ -21,7 +21,7 @@ Blogee::Application.routes.draw do
       post :unfollow
     end
     namespace :articles, path: 'article' do
-      get :basic_stats
+      post :basic_stats
     end
   end
 
@@ -30,14 +30,15 @@ Blogee::Application.routes.draw do
     get '',   to: 'dashboard#index',    as: 'user_dashboard'
   end
 
-  get 'article/:id', to: 'articles#show', as: 'article_show'
-
-  resource :articles,         path: 'article', only: [:create, :update, :destroy]
+  resource :articles,         path: 'article', only: [:new, :edit, :create, :update, :destroy]
   resource :article_sets,     path: 'set'
   resource :article_comments, path: 'comments'
 
   #### VERY BOTTOM IN ORDER OF IMPORTANCE
-  get ':username',    to: 'users#show',   as: 'user_profile'
+  scope ':username' do
+    get '', to: 'users#show', as: 'user_profile'
+    get ':m/:d/:y/:id', to: 'articles#show', as: 'article_show'
+  end
 
   devise_scope :user do
     authenticated :user do

@@ -9,10 +9,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
-gem 'sass-rails', '~> 4.0.3'
-gem 'compass-rails'
-gem 'breakpoint'
-gem 'susy'
+gem 'sass-rails', :git => 'https://github.com/rails/sass-rails.git'
+gem 'susy', '~> 2.1.2'
+gem 'breakpoint', '~> 2.4.0'
 gem 'font-awesome-sass'
 
 gem 'devise'
@@ -32,6 +31,15 @@ group :development, :test do
 	gem 'sqlite3'
   gem 'quiet_assets'
   gem 'spring'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'nyan-cat-formatter'
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end
 
 group :production do

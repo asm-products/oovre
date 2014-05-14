@@ -1,12 +1,7 @@
-<% if @article.can_edit?(current_user) %>
-	<%= render 'articles/edit' %>
-<% end %>
-
 <% @main_article = @article %>
-
 <div class="article-view">
 
-	<% if @article.image? %>
+	<% if @article.image.exists? %>
 		<div class="background-image"><div class="bg" style="background:url('<%= @article.image.url(:large) %>') no-repeat center center fixed;"></div></div>
 	<% end %>
 
@@ -27,7 +22,7 @@
 	</div>
 
 	<div class="container">
-		
+
 		<div class="col-8 push-2 article-main-content">
 			<%= sanitize @article.content.html_safe, tags: %w(p div b u i a h1 h2 h3 h4 h5 ul ol li br), attributes: %w(href class id) %>
 		</div>
@@ -50,17 +45,17 @@
 		<div class="articles">
 			<% @article.more_from_author(3).each do |article| %>
 				<% @article = article %>
-				<%= render 'articles/cards/article1' %>
+				<%= render 'articles/cards/article2' %>
 			<% end %>
 		</div>
 	</div>
-	
+
 	<div class="section-title">More like this</div>
 	<div class="user-articles">
 		<div class="articles">
 			<% @article.similar(3).each do |article| %>
 				<% @article = article %>
-				<%= render 'articles/cards/article1' %>
+				<%= render 'articles/cards/article2' %>
 			<% end %>
 		</div>
 	</div>
@@ -69,7 +64,12 @@
 	<div class="recommended-article">
 		<div class="articles">
 			<% @article = @main_article.recommended %>
-			<%= render 'articles/cards/article3' %>
+			<%= render 'articles/cards/article2' %>
 		</div>
 	</div>
 </div>
+
+<% if @main_article.can_edit?(current_user) %>
+	<% @article = @main_article %>
+	<%= render 'articles/edit' %>
+<% end %>

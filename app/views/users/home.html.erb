@@ -1,10 +1,10 @@
 <div class="container">
 	
-	<div class="sidebar col-3">TRENDING ARTICLES</div>
+	<div class="sidebar">TRENDING ARTICLES</div>
 
-	<div class="article-stream col-9">
+	<div class="article-stream">
 		<% @articles.each do |article| %>
-			<div class="article-card-1 col-6">
+			<div class="article-card-1">
 				<% if article.image? %>
 				<div class="article" style="background:url('<%= article.image.url(:large) %>') no-repeat center center;">
 				<% else %>
@@ -12,14 +12,14 @@
 				<% end %>
 				
 					<div class="info">
-						<!-- <div class="time"><%= time_ago_in_words(article.created_at) %></div> -->
+						<div class="time"><%= time_ago_in_words(article.created_at) %></div>
 						<div class="user">
 							<div class="name"><%= article.user.name %></div>
 							<%= image_tag article.user.avatar.url(:thumb), class: 'profile-img' %>
 						</div>
 					</div>
 					<div class="av-info">
-						<a href="<%= article_show_path(article) %>"><div class="title"><%= article.title %></div></a>
+						<a href="<%= article_show_path(article.user.username, article.created_at.month, article.created_at.day, article.created_at.year, article) %>"><div class="title"><%= article.title %></div></a>
 					</div>
 					<% if article.image? %>
 						<div class="overlay"></div>
@@ -30,3 +30,42 @@
 	</div>
 
 </div>
+<!-- 
+<div class="container">
+	
+	<div class="sidebar">Trending Articles</div>
+	<div class="article-stream">
+		<% @articles.each do |article| %>
+			
+			<div class="article-card-1">
+				<% if article.image.exists? %>
+				<div class="article" style="background:url('<%= article.image.url(:large) %>') no-repeat center center;">
+					<div class="overlay"></div>
+				<% else %>
+				<div class="article">
+				<% end %>
+
+					<div class="info">
+						<div class="time"><%= time_ago_in_words(article.created_at) %></div>
+						<div class="user">
+							<span class="name"><%= article.user.name %></span>
+							<%= image_tag article.user.avatar.url(:thumb), class: 'profile-img' %>
+						</div>
+						<div class="set">Computer Programming</div>
+					</div>
+
+					<div class="article-content">
+						<div class="title"><%= article.title %></div>
+					</div>
+
+					<div class="readmore">
+						<p>Read More</p>
+					</div>
+
+				</div>
+			</div>
+
+		<% end %>
+	</div>
+
+</div> -->

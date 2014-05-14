@@ -9,7 +9,7 @@
 			<li><%= link_to "Dashboard", user_dashboard_path %></li>
 		</ul>
 		<div class="user-nav">
-			<div class="new-article"><a id="new_article_btn" class="ghost">New Article</a></div>
+			<div class="new-article"><%= link_to "New Article", new_articles_path, class: 'ghost' %></div>
 			<div class="user-profile">
 				<a href="<%= user_profile_path(current_user.username) %>"><%= image_tag current_user.avatar.url(:thumb), class: 'avatar' %></a>
 				<div class="dropdown">

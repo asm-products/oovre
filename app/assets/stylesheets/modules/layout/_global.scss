@@ -2,6 +2,10 @@ body {
   background-color:$bg-body;
 }
 
+.container {
+  @include container(12 center);
+}
+
 .padded-top {
   display:block;
   position:relative;

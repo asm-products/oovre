@@ -33,7 +33,7 @@ class Article < ActiveRecord::Base
   end
 
   def recommended
-    Article.find(9)
+    true
   end
 
   def can_edit?(user)
@@ -42,10 +42,6 @@ class Article < ActiveRecord::Base
 
   def can_delete(user)
     (self.user == user) ? true : false
-  end
-
-  def to_param
-    "#{id}-#{title.parameterize}"
   end
 
   # Add later when we know how to use it...

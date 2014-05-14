@@ -1,8 +1,6 @@
 @import "font-awesome";
-@import "breakpoint";
 @import "susy";
-
-@import "grid";
+// @import "breakpoint";
 
 @import "settings";
 @import "extras/**";
@@ -18,5 +16,7 @@
 @import "modules/article/view";
 
 // @import "modules/article/**";
-// @import "modules/home/**";
+@import "modules/home/**";
 @import "modules/dashboard/**";
+
+@import "responsive";

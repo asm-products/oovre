@@ -1,5 +1,5 @@
 <div class="container">
-	
+
 	<div class="section-title">Stats Today</div>
 	<div class="today-stats">
 		<div class="panel total-unique-views">
@@ -16,15 +16,17 @@
 		</div>
 	</div>
 
-<!-- 
+<!--
 	<div class="article-listing">
 		<div class="recent-articles">
 			<% @articles_today.each do |article| %>
+				<% if article.visit.present? %>
 				<div>
 					<div><%= article.title %></div>
 					<div><%= article.visit.unique_visits %></div>
 					<div><%= article.visit.total_visits %></div>
 				</div>
+				<% end %>
 			<% end %>
 		</div>
 	</div> -->

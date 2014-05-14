@@ -1,6 +1,5 @@
 class ArticleSet < ActiveRecord::Base
   belongs_to :user
-  belongs_to :article
   has_many :articles
   has_many :article_set_subscriptions
 

@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_action :get_article
+  before_action :get_article, only: [:update, :edit, :destroy]
 
   def new
   end
@@ -9,22 +9,22 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
     Visit.track(@article, request)
   end
 
   def create
+    @article = current_user.articles.create(article_params)
     if @article.save()
       respond_to do |f|
-        f.html
-        f.json { 
-          render :json => { status: :created, message: "Successfully created article.", article: @article } 
+        f.json {
+          render :json => { status: :created, message: "Successfully created article.", article: @article, location: article_show_path(@article) }
         }
       end
     else
       respond_to do |f|
-        f.html
-        f.json { 
-          render :json => { status: :unprocessible_entity, message: "Oops... something went wrong, please try again." } 
+        f.json {
+          render :json => { status: :unprocessible_entity, message: "Oops... something went wrong, please try again." }
         }
       end
     end
@@ -33,12 +33,10 @@ class ArticlesController < ApplicationController
   def update
     if @article.update_attributes(article_params)
       respond_to do |f|
-        f.html
         f.json { render :json => { status: :ok, message: "Successfully updated article!" } }
       end
     else
       respond_to do |f|
-        f.html
         f.json { render :json => { status: :ok, message: "Oops... Something went wrong, we're working on it." } }
       end
     end
@@ -54,7 +52,7 @@ class ArticlesController < ApplicationController
   end
 
   def get_article
-    @article = Article.find(params[:id].to_i)
+    @article = Article.find(params[:id])
   end
 
   private

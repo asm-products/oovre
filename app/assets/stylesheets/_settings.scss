@@ -1,6 +1,11 @@
 @import "extras/reset";
 
-$susy: 12;
+$susy: (
+  columns: 12,
+  gutters: 1/4,
+  gutter-position: inside,
+  container: 60em,
+);
 
 // Main Colors
 $primary-color: #428bca;

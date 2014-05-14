@@ -37,19 +37,11 @@ class User < ActiveRecord::Base
   end
 
   def article_views_unique_today
-    count = 0
-    self.articles.today.each do |a|
-      count = count + a.visit.unique_visits
-    end
-    count
+    0
   end
 
   def article_views_total_today
-    count = 0
-    self.articles.today.each do |a|
-      count = count + a.visit.total_visits
-    end
-    count
+    0
   end
 
   def name
