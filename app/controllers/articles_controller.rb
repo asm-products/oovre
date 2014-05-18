@@ -14,19 +14,28 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = current_user.articles.create(article_params)
-    if @article.save()
-      respond_to do |f|
-        f.json {
-          render :json => { status: :created, message: "Successfully created article.", article: @article, location: article_show_path(@article) }
+    respond_to do |format|
+
+      @article = current_user.articles.create(article_params)
+      if @article.save()
+        format.html do
+          redirect_to article_show_path(@article.user.username, @article, @article.param_title)
+        end
+        format.json {
+          render :json => { status: :created, message: "Successfully created article.", 
+            article: @article, 
+            location: article_show_path(@article.user.username, @article) }
+        }
+      else
+        format.html do
+          render 'new', notice: 'There was an error. Please try again.'
+        end
+        format.json {
+          render :json => { status: :unprocessible_entity, 
+            message: "Oops... something went wrong, please try again." }
         }
       end
-    else
-      respond_to do |f|
-        f.json {
-          render :json => { status: :unprocessible_entity, message: "Oops... something went wrong, please try again." }
-        }
-      end
+
     end
   end
 
@@ -38,6 +47,20 @@ class ArticlesController < ApplicationController
     else
       respond_to do |f|
         f.json { render :json => { status: :ok, message: "Oops... Something went wrong, we're working on it." } }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @article.update_attributes(article_params)
+        format.html do
+          redirect_to article_show_path(@article.user.username, @article), notice: "Article was updated successfully!"
+        end
+      else
+        format.html do
+          render 'edit', notice: 'Oops.. Something went wrong, we are working on it.'
+        end
       end
     end
   end

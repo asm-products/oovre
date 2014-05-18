@@ -1,4 +1,7 @@
 .article-main-content {
+  width: span(8 of 12);
+  @include push(2);
+
   margin-top:100px;
   
   h1 { font-size:40px; margin-bottom:15px; }

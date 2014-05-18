@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
   has_one :visit, as: :visitable
   has_many :article_comments
   has_many :tags
-
+  
   def similar(count=5)
     Article.all.take(count)
   end
@@ -33,7 +33,7 @@ class Article < ActiveRecord::Base
   end
 
   def recommended
-    true
+    Article.first()
   end
 
   def can_edit?(user)
@@ -42,6 +42,10 @@ class Article < ActiveRecord::Base
 
   def can_delete(user)
     (self.user == user) ? true : false
+  end
+
+  def param_title
+    self.title.parameterize
   end
 
   # Add later when we know how to use it...

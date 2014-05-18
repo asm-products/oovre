@@ -1,4 +1,32 @@
-<% @main_article = @article %>
+<%= content_for(:title) { @article.title } %>
+<% content_for :meta do %>
+
+<meta name="description" content="<%= "#{@article.title} published by #{@article.user.name}." %>" />
+
+<!-- Twitter Card data --> 
+<meta name="twitter:card" content="summary_large_image"> 
+<meta name="twitter:site" content="@oovrepub"> 
+<meta name="twitter:title" content="<%= truncate(@article.title, length: 70) %>"> 
+<meta name="twitter:description" content="<%= truncate(strip_tags(@article.content), length: 200) %>"> 
+<!-- <meta name="twitter:creator" content="@author_handle">  -->
+<!-- Twitter Summary card images must be at least 200x200px --> 
+<meta name="twitter:image:src" content="<%= @article.image.url(:small) %>">
+
+<!-- Open Graph data --> 
+<meta property="og:title" content="<%= @article.title %>" /> 
+<meta property="og:type" content="article" /> 
+<meta property="og:url" content="<%= article_show_path(@article.user.username, @article.id, @article.param_title) %>" />
+<meta property="og:image" content="<%= @article.image.url(:small) %>" />
+<meta property="og:description" content="<%= truncate(strip_tags(@article.title), length: 70) %>" />
+<meta property="article:published_time" content="<%= @article.created_at %>" /> 
+<meta property="article:modified_time" content="<%= @article.updated_at %>" /> 
+<!-- <meta property="article:section" content="Article Section" />  -->
+<!-- <meta property="article:tag" content="Article Tag" />  -->
+<meta property="og:site_name" content="Oovre" /> 
+<!-- <meta property="fb:admins" content="Facebook numeric ID" /> -->
+
+<% end %>
+
 <div class="article-view">
 
 	<% if @article.image.exists? %>
@@ -6,7 +34,6 @@
 	<% end %>
 
 	<div class="container">
-		<% if @article.can_edit?(current_user) %><a class="ghost primary" id="edit_article_btn">Edit</a><% end %>
 		<div class="col-8 av-info">
 			<div class="title"><%= @article.title %></div>
 			<div class="subtitle"><%= @article.subtitle %></div>
@@ -17,6 +44,7 @@
 			<div class="user-info">
 				Created by <a href="<%= user_profile_path(@article.user.username) %>"><%= @article.user.name %></a>
 			</div>
+			<% if @article.can_edit?(current_user) %><a class="ghost primary" id="edit_article_btn">Edit</a><% end %>
 		</div>
 
 	</div>
@@ -44,8 +72,7 @@
 	<div class="user-articles">
 		<div class="articles">
 			<% @article.more_from_author(3).each do |article| %>
-				<% @article = article %>
-				<%= render 'articles/cards/article2' %>
+				<%= render 'articles/cards/article1', article: article %>
 			<% end %>
 		</div>
 	</div>
@@ -54,22 +81,8 @@
 	<div class="user-articles">
 		<div class="articles">
 			<% @article.similar(3).each do |article| %>
-				<% @article = article %>
-				<%= render 'articles/cards/article2' %>
+				<%= render 'articles/cards/article1', article: article %>
 			<% end %>
 		</div>
 	</div>
-
-	<div class="section-title">Recommended</div>
-	<div class="recommended-article">
-		<div class="articles">
-			<% @article = @main_article.recommended %>
-			<%= render 'articles/cards/article2' %>
-		</div>
-	</div>
 </div>
-
-<% if @main_article.can_edit?(current_user) %>
-	<% @article = @main_article %>
-	<%= render 'articles/edit' %>
-<% end %>

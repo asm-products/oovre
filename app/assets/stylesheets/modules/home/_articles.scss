@@ -3,4 +3,29 @@
   @include span(9 of 12);
   padding:10px;
 
+  .article-card-1 {
+    height: 300px;
+    margin-bottom: 10px;
+    @include span(6 of 12);
+    // height:300px;
+    // float:left;
+    // width: span(6 of 12);
+  }
+
+}
+
+.user-articles {
+  @include span(12);
+
+  .article-card-1 {
+    height:300px;
+    margin-bottom:10px;
+    @include span(6 of 12);
+
+    .article {
+      &.dark {
+        background: #333;
+      }
+    }
+  }
 }

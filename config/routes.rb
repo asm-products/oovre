@@ -35,9 +35,10 @@ Blogee::Application.routes.draw do
   resource :article_comments, path: 'comments'
 
   #### VERY BOTTOM IN ORDER OF IMPORTANCE
+  get 'article/:id', to: 'articles#show'
+  get ':username', to: 'users#show', as: 'user_profile'
   scope ':username' do
-    get '', to: 'users#show', as: 'user_profile'
-    get ':m/:d/:y/:id', to: 'articles#show', as: 'article_show'
+    get ':id/:title', to: 'articles#show', as: 'article_show'
   end
 
   devise_scope :user do

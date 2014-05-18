@@ -1,25 +1,33 @@
 <div class="article-card-1">
+				
+	<% if article.image.exists? %>
+	<div class="article" style="background:url('<%= article.image.url(:large) %>') no-repeat center center; background-size:cover;">
+		<div class="overlay"></div>
+	<% else %>
+	<div class="article dark">
+	<% end %>
 
-	<div class="article-container">
-
-		<% if @article.image? %>
-		<div class="background">
-			<div class="user-information">
-				<a href="<%= user_profile_path(@article.user.username) %>">
-					<div class="profile-image">
-						<span><%= @article.user.name %></span>
-						<%= image_tag @article.user.avatar.url(:thumb), class: 'avatar' %>
-					</div>
+		<div class="info">
+			<div class="time"><%= time_ago_in_words(article.created_at) %> ago</div>
+			
+			<div class="user">
+				<a href="<%= user_profile_path(article.user) %>">
+				<%= image_tag article.user.avatar.url(:thumb), class: 'profile-img' %>
+				<span class="name"><%= article.user.name %></span>
 				</a>
 			</div>
-			<div class="overlay"></div>
-			<%= image_tag @article.image.url(:small), class: 'background-image' %>
+
 		</div>
-		<% end %>
 
-		<div class="title"><%= @article.title %></div>
-		<div class="subtitle"><%= @article.subtitle if !@article.subtitle.blank? %></div>
+		<div class="article-content">
+			<a href="<%= article_show_path(article.user.username, article.id, article.param_title) %>"><div class="title"><%= article.title %></div></a>
+		</div>
+
+		<a href="<%= article_show_path(article.user.username, article.id, article.param_title) %>">
+			<div class="readmore">
+				<p>Read More</p>
+			</div>
+		</a>
+
 	</div>
-	<a href="<%= article_show_path(@article) %>"><div class="read-more">read more</div></a>
-
 </div>

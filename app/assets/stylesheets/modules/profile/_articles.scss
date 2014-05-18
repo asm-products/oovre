@@ -7,9 +7,6 @@
       width: span(4 of 12);
       // margin-right:0;
       margin-bottom:10px;
-      &:nth-child(3n+3) {
-        margin-right:0 !important;
-      }
       a {
         text-decoration:none;
         color:#333;
