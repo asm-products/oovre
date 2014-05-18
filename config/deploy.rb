@@ -22,7 +22,7 @@ set :deploy_to, '/home/deploy/oovre'
 # Default value for :pty is false
 # set :pty, true
 
-set :bundle_flags "--deployment"
+set :bundle_flags, "--deployment"
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml}
