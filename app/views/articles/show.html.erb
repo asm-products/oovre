@@ -17,7 +17,7 @@
 <meta property="og:type" content="article" /> 
 <meta property="og:url" content="<%= article_show_path(@article.user.username, @article.id, @article.param_title) %>" />
 <meta property="og:image" content="<%= @article.image.url(:small) %>" />
-<meta property="og:description" content="<%= truncate(strip_tags(@article.title), length: 70) %>" />
+<meta property="og:description" content="<%= truncate(strip_tags(@article.content), length: 70) %>" />
 <meta property="article:published_time" content="<%= @article.created_at %>" /> 
 <meta property="article:modified_time" content="<%= @article.updated_at %>" /> 
 <!-- <meta property="article:section" content="Article Section" />  -->
