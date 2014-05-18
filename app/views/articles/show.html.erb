@@ -68,6 +68,7 @@
 </div>
 
 <div class="container">
+	<% if !@article.more_from_author(3).empty? %>
 	<div class="section-title">More From <%= @article.user.name %></div>
 	<div class="user-articles">
 		<div class="articles">
@@ -76,13 +77,14 @@
 			<% end %>
 		</div>
 	</div>
+	<% end %>
 
-	<div class="section-title">More like this</div>
+	<!-- <div class="section-title">More like this</div>
 	<div class="user-articles">
 		<div class="articles">
 			<% @article.similar(3).each do |article| %>
 				<%= render 'articles/cards/article1', article: article %>
 			<% end %>
 		</div>
-	</div>
+	</div> -->
 </div>
