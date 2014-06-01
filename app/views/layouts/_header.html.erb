@@ -1,5 +1,20 @@
-<div class="header">
-	
+<% if user_signed_in? %>
+<header id="header" class="header">
+	<div class="header-container">
+		<a href="<%= user_home_path %>"><%= image_tag "oovre-logo.png", class: 'logo' %></a>
+		<!-- <div class="navigation"><i class="fa fa-menu"></i></div> -->
+		<div class="user">
+			<div class="new"><a id="new-btn" class="ghost">New</a></div>
+			<a href="<%= user_profile_path(current_user.username) %>" style="float:left;">
+				<%= image_tag current_user.avatar.url(:thumb), class: 'avatar' %>
+			</a>
+		</div>
+	</div>
+</header>
+<% end %>
+<div class="padded-top"></div>
+
+<!-- <div class="header">
 	<div class="hc-container">
 		<a href="<%= user_home_path %>" class="logo"><%= image_tag "oovre-logo.png" %></a>
 		<% if user_signed_in? %>
@@ -28,7 +43,4 @@
 		</ul>
 		<% end %>
 	</div>
-
-</div>
-
-<div class="padded-top"></div>
+</div> -->

@@ -27,6 +27,7 @@ gem 'capistrano-rvm', github: 'capistrano/rvm'
 # gem 'omniauth-twitter'
 
 group :development, :test do
+  gem 'better_errors'
 	gem 'rspec-rails'
 	gem 'sqlite3'
   gem 'quiet_assets'

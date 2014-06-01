@@ -1,0 +1,21 @@
+@mixin ghost($color: #333, $radius: 0px, $border: 1px) {
+  border: $border solid $color;
+  padding: 5px 8px;
+  font-size: 14px;
+  border-radius: $radius;
+  background-color: transparent;
+  -webkit-transition: background-color, color 100ms ease;
+  -moz-transition: background-color, color 100ms ease;
+  -ms-transition: background-color, color 100ms ease;
+  -o-transition: background-color, color 100ms ease;
+  transition: background-color, color 100ms ease;
+  &:hover {
+    cursor:pointer;
+    background-color: $color;
+    color:lighten($color, 50%);
+  }
+}
+
+.ghost {
+  @include ghost();
+}
