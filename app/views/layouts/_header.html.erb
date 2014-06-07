@@ -4,43 +4,24 @@
 		<a href="<%= user_home_path %>"><%= image_tag "oovre-logo.png", class: 'logo' %></a>
 		<!-- <div class="navigation"><i class="fa fa-menu"></i></div> -->
 		<div class="user">
-			<div class="new"><a id="new-btn" class="ghost">New</a></div>
+			<div class="new"><a id="new-btn" class="ghost primary">New</a></div>
 			<a href="<%= user_profile_path(current_user.username) %>" style="float:left;">
-				<%= image_tag current_user.avatar.url(:thumb), class: 'avatar' %>
+				<% if current_user.avatar? %>
+					<%= image_tag current_user.avatar.url(:thumb), class: 'avatar' %>
+				<% else %>
+					<%= image_tag current_user.gravatar, class: 'avatar' %>
+				<% end %>
 			</a>
+			<div id="user-dropdown">
+				<ul>
+					<li><%= link_to "Profile", user_profile_path(current_user.username) %></li>
+					<li><%= link_to "Settings", edit_user_registration_path %></li>
+					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </header>
 <% end %>
-<div class="padded-top"></div>
 
-<!-- <div class="header">
-	<div class="hc-container">
-		<a href="<%= user_home_path %>" class="logo"><%= image_tag "oovre-logo.png" %></a>
-		<% if user_signed_in? %>
-		<ul class="navigation">
-			<li><%= link_to "Home", user_home_path %></li>
-			<li><%= link_to "Explore", explore_path %></li>
-			<li><%= link_to "Dashboard", user_dashboard_path %></li>
-		</ul>
-		<div class="user-nav">
-			<div class="new-article"><%= link_to "New Article", new_articles_path, class: 'ghost' %></div>
-			<div class="user-profile">
-				<a href="<%= user_profile_path(current_user.username) %>"><%= image_tag current_user.avatar.url(:thumb), class: 'avatar' %></a>
-				<div class="dropdown">
-					<ul>
-						<li><%= link_to "Settings", edit_user_registration_path %></li>
-						<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<% else %>
-		<ul class="navigation">
-			<li><%= link_to "Home", user_home_path %></li>
-			<li><%= link_to "About", page_about_path %></li>
-			<li><%= link_to "Team", page_team_path %></li>
-		</ul>
-		<% end %>
-	</div>
-</div> -->
+<div class="padded-top"></div>

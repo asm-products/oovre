@@ -1,8 +1,8 @@
-@mixin ghost($color: #333, $radius: 0px, $border: 1px) {
-  border: $border solid $color;
+.ghost {
+  border: 2px solid #333;
   padding: 5px 8px;
   font-size: 14px;
-  border-radius: $radius;
+  border-radius: 0px;
   background-color: transparent;
   -webkit-transition: background-color, color 100ms ease;
   -moz-transition: background-color, color 100ms ease;
@@ -11,11 +11,16 @@
   transition: background-color, color 100ms ease;
   &:hover {
     cursor:pointer;
-    background-color: $color;
-    color:lighten($color, 50%);
+    background-color: #333;
+    color:lighten(#333, 50%);
   }
-}
 
-.ghost {
-  @include ghost();
+  &.primary {
+    border: 2px solid #4a90e2;
+    &:hover {
+      background-color: #4a90e2;
+      color:lighten(#4a90e2, 50%);
+    }
+  }
+  
 }

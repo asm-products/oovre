@@ -26,11 +26,11 @@ header {
           .ghost {
             padding:5px 15px;
             border-radius:0;
-            border:2px solid #000;
-            color:#000;
+            border:2px solid #4a90e2;
+            color:#4a90e2;
             &:hover {
-              background-color:#000;
-              color:#fff;
+              background-color:#4a90e2;
+              color:lighten(#4a90e2, 50%);
             }
           }
         }

@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  scope :recent, -> {}
+  scope :recent, -> { order("created_at DESC") }
+  scope :today, -> { where("users.created_at >= ? and users.created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day) }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -18,7 +22,6 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: 'followed_id', class_name: 'Relationship'
   has_many :followers, through: :reverse_relationships
-
 
   def following?(other_user_id)
     relationships.find_by(followed_id: other_user_id)
@@ -42,6 +45,11 @@ class User < ActiveRecord::Base
 
   def article_views_total_today
     0
+  end
+
+  def gravatar
+    id = Digest::MD5.hexdigest(self.email.downcase)
+    "http://gravatar.com/avatar/#{id}.png?s=50"
   end
 
   def name

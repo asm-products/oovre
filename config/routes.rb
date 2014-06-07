@@ -14,6 +14,12 @@ Blogee::Application.routes.draw do
 
   get 'explore/', to: 'explore#index', as: 'explore'
 
+  scope :admin do
+    get '', to: 'admin#index', as: 'admin'
+    get 'users', to: 'admin#users', as: 'admin_user_management'
+    get 'articles', to: 'admin#articles', as: 'admin_article_management'
+  end
+
   namespace :api do
     namespace :users, path: 'user' do
       get :follower_count
