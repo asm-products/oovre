@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428210352) do
+ActiveRecord::Schema.define(version: 20140525195904) do
 
   create_table "article_comments", force: true do |t|
     t.integer  "article_id"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20140428210352) do
     t.datetime "image_updated_at"
     t.integer  "article_set_id"
     t.integer  "status",             default: 0
+  end
+
+  create_table "invites", force: true do |t|
+    t.string   "first_name"
+    t.string   "email"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "relationships", force: true do |t|
