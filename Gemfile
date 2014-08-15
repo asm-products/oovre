@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-#ruby-gemset=blogee
+#ruby-gemset=oovre
 
 gem 'foreman'
 gem 'thin'
