@@ -1,27 +1,32 @@
-.ghost {
-  border: 2px solid #333;
-  padding: 5px 8px;
-  font-size: 14px;
-  border-radius: 0px;
-  background-color: transparent;
-  -webkit-transition: background-color, color 100ms ease;
-  -moz-transition: background-color, color 100ms ease;
-  -ms-transition: background-color, color 100ms ease;
-  -o-transition: background-color, color 100ms ease;
-  transition: background-color, color 100ms ease;
-  
-  &:hover {
-    cursor:pointer;
-    background-color: #333;
-    color:lighten(#333, 50%);
+.btn, button, input[type="button"], input[type="submit"] {
+  border:0;
+  padding:5px 0px;
+  font-size:14px;
+  border-radius:0px;
+  background-color:#333;
+
+  // Ghost buttons
+  &.ghost {
+    border:1px solid;
+    border-color:#333;
+    color:#333;
   }
 
+  // Sizes
+  &.large {}
+  &.medium {}
+  &.small {}
+
+  // Colors
   &.primary {
-    border: 2px solid #4a90e2;
+    color:#FFF;
+    background-color:#333;
+    border-color:#333;
     &:hover {
-      background-color: #4a90e2;
-      color:lighten(#4a90e2, 50%);
+      background-color:darken(#333, 10%);
+      color:#FFF;
     }
   }
-  
+  &.secondary {}
+
 }

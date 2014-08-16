@@ -20,5 +20,5 @@ class UsersController < ApplicationController
       @trending = Article.today.trending_with_unique.take(5)
     end
   end
-
+  
 end

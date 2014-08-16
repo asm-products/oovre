@@ -39,12 +39,8 @@ class User < ActiveRecord::Base
     self.articles.recent.take(count)
   end
 
-  def article_views_unique_today
-    0
-  end
-
-  def article_views_total_today
-    0
+  def getstats
+    # ouput stats in some kind of map or json
   end
 
   def gravatar

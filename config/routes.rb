@@ -13,6 +13,7 @@ Blogee::Application.routes.draw do
   get 'features/',  to: 'pages#features', as: 'page_features'
 
   get 'explore/', to: 'explore#index', as: 'explore'
+  get 'me/', to: 'explore#me', as: 'my_oovre'
 
   scope :admin do
     get '', to: 'admin#index', as: 'admin'

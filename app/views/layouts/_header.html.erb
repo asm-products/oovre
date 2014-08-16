@@ -1,27 +1,38 @@
-<% if user_signed_in? %>
-<header id="header" class="header">
-	<div class="header-container">
-		<a href="<%= user_home_path %>"><%= image_tag "oovre-logo.png", class: 'logo' %></a>
-		<!-- <div class="navigation"><i class="fa fa-menu"></i></div> -->
+<div id="oovre" class="my-oovre"><%= image_tag "oovre-logo.png", class: 'logo' %></div>
+<div id="header">
+	
+	<div class="container">
+
+		<div class="navigation">
+			<ul>
+				<li><a href="<%= user_home_path %>">Home</a></li>
+				<li><a href="#">Mag</a></li>
+				<li><a href="#">Sets</a></li>
+				<li><a href="#">Stats</a></li>
+			</ul>
+		</div>
+		
+		<% if user_signed_in? %>
 		<div class="user">
-			<div class="new"><a id="new-btn" class="ghost primary">New</a></div>
-			<a href="<%= user_profile_path(current_user.username) %>" style="float:left;">
-				<% if current_user.avatar? %>
-					<%= image_tag current_user.avatar.url(:thumb), class: 'avatar' %>
-				<% else %>
-					<%= image_tag current_user.gravatar, class: 'avatar' %>
-				<% end %>
-			</a>
-			<div id="user-dropdown">
-				<ul>
-					<li><%= link_to "Profile", user_profile_path(current_user.username) %></li>
-					<li><%= link_to "Settings", edit_user_registration_path %></li>
-					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-				</ul>
+			<div class="action">
+				<div class="welcome">Welcome back, <%= current_user.first_name %>!</div>
+				<div class="logout">
+					<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+				</div>
+			</div>
+			<div class="profile-img">
+				<%= image_tag current_user.gravatar, class: 'avatar' %>
 			</div>
 		</div>
-	</div>
-</header>
-<% end %>
+		<% else %>
+		<div class="guest">
+			<a href="#" class="btn primary ghost">Login</a>
+			<a href="#" class="btn primary">Signup</a>
+		</div>
+		<% end %>
 
-<div class="padded-top"></div>
+		<div class="clear"></div>
+
+	</div>
+
+</div>
