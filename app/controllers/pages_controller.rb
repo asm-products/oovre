@@ -11,5 +11,8 @@ class PagesController < ApplicationController
 
   def features
   end
+
+  def grid
+  end
   
 end

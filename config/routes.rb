@@ -1,5 +1,5 @@
 Blogee::Application.routes.draw do
-
+  get 'grid', to: 'pages#grid', as: 'grid_test'
   devise_for :users, :path => '', :path_names => {
     :sign_in => "login",
     :sign_out => "logout",
@@ -22,7 +22,7 @@ Blogee::Application.routes.draw do
   end
 
   namespace :api do
-    namespace :users, path: 'user' do
+    namespace :users, path: 'users' do
       get :follower_count
       post :follow
       post :unfollow

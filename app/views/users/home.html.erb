@@ -26,101 +26,12 @@
 		<div class="header">From People You Follow</div>
 		<div class="meta-sidebar">some random meta-data sidebar content holder for random shit the user needs to know.</div>
 		<div class="articles">
-			<div class="article">
-				<div class="title">Some Title</div>
-				<div class="subtitle">Some subtitle</div>
-				<div class="short">Some random test content here...</div>
-			</div>
-			<div class="article">
-				<div class="title">Some Title</div>
-				<div class="subtitle">Some subtitle</div>
-				<div class="short">Some random test content here...</div>
-			</div>
-			<div class="article">
-				<div class="title">Some Title</div>
-				<div class="subtitle">Some subtitle</div>
-				<div class="short">Some random test content here...</div>
-			</div>
-		</div>
-	</div>
-
-</div>
-
-<div class="container">
-	
-	<div class="sidebar">
-		<div class="trending-articles">
-			<% @trending.each do |article| %>
-				<div class="article-card-1">
-					
-					<% if article.image.exists? %>
-					<div class="article">
-						<div class="background-image" style="background:url('<%= article.image.url(:large) %>') no-repeat center center; background-size:cover;"></div>
-						<div class="overlay"></div>
-					<% else %>
-					<div class="article dark">
-					<% end %>
-
-						<div class="info">
-							<div class="user">
-								<a href="<%= user_profile_path(article.user.username) %>">
-								<%= image_tag article.user.avatar.url(:thumb), class: 'profile-img' %>
-								<span class="name"><%= article.user.name %></span>
-								</a>
-							</div>
-						</div>
-
-						<div class="article-content">
-							<a href="<%= article_show_path(article.user.username, article.id, article.param_title) %>"><div class="title"><%= article.title %></div></a>
-						</div>
-
-					</div>
+			<% @following_articles.each do |article| %>
+				<div class="article">
+					<a href="#"><span class="title"><%= article %></span></a>
 				</div>
 			<% end %>
 		</div>
-	</div>
-	<div class="article-stream">
-		<% @articles.each do |article| %>
-			
-			<div class="article-card-1">
-				
-				<% if article.image.exists? %>
-				<div class="article">
-					<div class="background-image" style="background:url('<%= article.image.url(:large) %>') no-repeat center center; background-size:cover;"></div>
-					<div class="overlay"></div>
-				<% else %>
-				<div class="article dark">
-				<% end %>
-
-					<div class="info">
-						<div class="time"><%= time_ago_in_words(article.created_at) %> ago</div>
-						
-						<div class="user">
-							<a href="<%= user_profile_path(article.user.username) %>">
-							<%= image_tag article.user.avatar.url(:thumb), class: 'profile-img' %>
-							<span class="name"><%= article.user.name %></span>
-							</a>
-						</div>
-
-					</div>
-
-					<div class="article-content">
-						<a href="<%= article_show_path(article.user.username, article.id, article.param_title) %>"><div class="title"><%= article.title %></div></a>
-						<% if !article.subtitle.blank? %>
-						<div class="subtitle"><%= article.subtitle %></div>
-						<% end %>
-					</div>
-
-					<a href="<%= article_show_path(article.user.username, article.id, article.param_title) %>">
-					<div class="readmore">
-						<p>Read More</p>
-					</div>
-					</a>
-
-				</div>
-			</div>
-
-		<% end %>
 	</div>
 
 </div>

@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
 
   scope :recent, -> { order("created_at DESC") }
   scope :today, -> { where("articles.created_at >= ? and articles.created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day) }
-  scope :with_visits, lambda { joins(:visit) }
+  scope :with_visits, -> { joins(:visit) }
   scope :trending_with_unique, -> { with_visits.order('visits.unique_visits DESC')}
   scope :trending_with_total, -> { with_visits.order("visits.total_visits DESC") }
 

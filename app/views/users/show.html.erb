@@ -1,14 +1,14 @@
 <% content_for(:title){ "#{@user.name} | Oovre" } %>
 
-<div id="user-information" data-user-id="<%= @user.id %>" data-user-name="<%= @user.name %>"></div>
+<!-- <div id="user-information" data-user-id="<%= @user.id %>" data-user-name="<%= @user.name %>"></div>
 
 <div class="profile-header">
 	<div class="cover-container">
 		<div class="cover" style="background-image:url(<%= @user.cover_image.url %>);"></div>
 		<% if @user.cover_image? %>
-			<!-- <%= image_tag @user.cover_image.url, :class => 'cover' %> -->
+			<%= image_tag @user.cover_image.url, :class => 'cover' %>
 		<% end %>
-		<div class="cover-overlay"></div>
+	<div class="cover-overlay"></div>
 	</div>
 	<div class="user">
 		<div class="follow">
@@ -42,16 +42,12 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
-<div class="container">
-	<div class="user-articles">
-
-		<div class="articles">
-			<% @user.recent_articles(20).each do |article| %>
-				<%= render 'articles/cards/article1', article: article %>
-			<% end %>
-		</div>
+<div class="profile-hero" style="background-color:#93A644;">
+	<div class="container hero">
+		
+		<%= image_tag @user.avatar.url(:thumb), :class => 'avatar', :style => 'border:4px solid #93A644;' %>
 
 	</div>
 </div>
