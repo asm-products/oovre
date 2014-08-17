@@ -1,4 +1,4 @@
-<div id="oovre" class="my-oovre"><%= image_tag "oovre-logo.png", class: 'logo' %></div>
+<a href="<%= my_oovre_path %>"><div id="oovre" class="my-oovre"><%= image_tag "oovre-logo.png", class: 'logo' %></div></a>
 <div id="header">
 	
 	<div class="container">
@@ -21,7 +21,11 @@
 				</div>
 			</div>
 			<div class="profile-img">
+				<% if current_user.avatar %>
+				<%= image_tag current_user.avatar.url(:thumb), class: 'avatar' %>
+				<% else %>
 				<%= image_tag current_user.gravatar, class: 'avatar' %>
+				<% end %>
 			</div>
 		</div>
 		<% else %>
@@ -34,5 +38,4 @@
 		<div class="clear"></div>
 
 	</div>
-
 </div>

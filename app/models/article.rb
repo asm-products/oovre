@@ -48,9 +48,4 @@ class Article < ActiveRecord::Base
     self.title.parameterize
   end
 
-  # Add later when we know how to use it...
-  # def to_param
-  #   self.title.parameterize
-  # end
-
 end
