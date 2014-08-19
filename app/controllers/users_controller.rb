@@ -13,17 +13,14 @@ class UsersController < ApplicationController
   end
 
   def home
+    @recommended_articles = Article.recent.take(3)
+
+    @following_articles_users = []
     @following_articles = []
     following = current_user.followed_users.all
     following.each do |user|
+      @following_articles_users.push(user.username)
       @following_articles.push(user.articles.recent.take(1))
-    end
-
-    @articles = Article.recent.take(20)
-    if Article.today.trending_with_total.empty?
-      @trending = Article.recent.trending_with_unique.take(5)
-    else
-      @trending = Article.today.trending_with_unique.take(5)
     end
   end
   

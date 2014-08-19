@@ -2,36 +2,37 @@
 	
 	<div class="section recommended-articles">
 		<div class="header">Today's Recommendations</div>
-		<div class="meta-sidebar">some random fucking test content that can be collapsible when needed for smaller screens.</div>
 		<div class="articles">
-			<div class="article">
-				<div class="title">Some Title</div>
-				<div class="subtitle">Some subtitle</div>
-				<div class="short">Some short text of the article here...</div>
+			<% @recommended_articles.each do |article| %>
+			<div class="article" style="background-image:url('<%= article.image.url(:large) %>');">
+				<div class="title"><%= article.title %></div>
+				<div class="subtitle"><%= article.subtitle %></div>
+				<div class="short"><%= strip_tags(article.content.truncate(100)) %></div>
 			</div>
-			<div class="article">
-				<div class="title">Some Title</div>
-				<div class="subtitle">Some subtitle</div>
-				<div class="short">Some short text of the article here...</div>
-			</div>
-			<div class="article">
-				<div class="title">Some Title</div>
-				<div class="subtitle">Some subtitle</div>
-				<div class="short">Some short text of the article here...</div>
-			</div>
+			<% end %>
 		</div>
 	</div>
-
+	
+	<% if current_user.followed_users.count != 0 and @following_articles.flatten.count != 0 %>
 	<div class="section following-articles">
 		<div class="header">From People You Follow</div>
-		<div class="meta-sidebar">some random meta-data sidebar content holder for random shit the user needs to know.</div>
+		<div class="meta-sidebar">
+			<p>
+			<% @following_articles_users.each do |user|%>
+				<%= user %>
+			<% end %> published an article.
+			</p>
+		</div>
 		<div class="articles">
-			<% @following_articles.each do |article| %>
-				<div class="article">
-					<a href="#"><span class="title"><%= article %></span></a>
+			<% @following_articles.flatten.each do |article| %>
+				<div class="article" style="background-image:url('<%= article.image.url(:large) %>');">
+					<div class="title"><%= article.title %></div>
+					<div class="subtitle"><%= article.subtitle %></div>
+					<div class="short"><%= strip_tags(article.content.truncate(100)) %></div>
 				</div>
 			<% end %>
 		</div>
 	</div>
+	<% end %>
 
 </div>
